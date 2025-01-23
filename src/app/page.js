@@ -5,7 +5,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Github, Linkedin, Mail, ArrowRight, ArrowLeft, Menu, X, ExternalLink, Code2, BookOpen, Briefcase, BookMarked, User, Terminal, ChevronDown, Calendar } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
-import ScrollAwareFooter from '@/components/ui/ScrollAwarefooter';
 import { Badge } from '@/components/ui/badge';
 
 const Portfolio = () => {
