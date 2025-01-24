@@ -7,6 +7,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 
+
 const Portfolio = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovering, setIsHovering] = useState(false);
@@ -71,16 +72,9 @@ const Portfolio = () => {
 
   const journey = [
     {
-      year: "2025",
-      title: "Computer Science Student",
-      location: "IFMG Ibirité ",
-      description: "Starting my CS degree at IFMG Ibirité while living in Belo Horizonte. Continuing as co-founder and leading projects at Quantium Labs , balancing academic pursuits with professional development.",
-      skills: ["Computer Science", "Leadership", "Technical Architecture"]
-    },
-    {
       year: "2024",
       title: "Starting in business",
-      location: "Quantium Labs & Uork",
+      location: "Quantium Labs",
       description: "Co-founded Quantium Labs with two partners, focusing on innovative tech solutions. There I built most of my web development skills building projects for clients.",
       skills: ["ReactJS", "TailwindCSS", "Project Management", "Team Leadership"]
     },
@@ -299,7 +293,6 @@ const scrollToSection = (index) => {
           {/* Mobile Navigation */}
           {isMobile && (
         <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-900/30 backdrop-blur-sm p-4 flex justify-between items-center">
-          <h1 className="text-xl font-bold">Victor Humberto</h1>
           <Button 
             variant="ghost" 
             size="icon" 
@@ -417,8 +410,9 @@ const scrollToSection = (index) => {
           ref={el => sectionsRef.current[0] = el}
           className="h-screen snap-start flex items-center relative"
         >
-          <motion.div 
-            className="container mx-auto px-4 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+         <motion.div 
+            className="container mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center pt-20 md:pt-0"
+
             variants={{
               hidden: { opacity: 0 },
               visible: {
@@ -472,21 +466,21 @@ const scrollToSection = (index) => {
                 }}
               >
                 Full-stack developer passionate about building innovative solutions. 
-                Currently co-leading Quantium Labs' technical initiatives and persuing my degree in Computer Science.
+                Currently co-leading Quantium Labs's technical initiatives and persuing my degree in Computer Science.
               </motion.p>
               
               <motion.div 
-                className="flex gap-4"
+                className="flex flex-col md:flex-row gap-4 w-full"
                 variants={{
                   hidden: { opacity: 0, y: 20 },
                   visible: { opacity: 1, y: 0 }
                 }}
               >
     
-                <Button 
-                    variant="ghost" 
-                    size="lg" 
-                    className="bg-white/10 hover:bg-white/20 text-white"
+              <Button 
+                variant="ghost" 
+                size="lg" 
+                className="bg-white/10 hover:bg-white/20 text-white w-full md:w-auto justify-center"
                     onClick={() => window.open('https://github.com/VictorHumberto01', '_blank')}
                   >
                     <Github className="mr-2 h-4 w-4" /> GitHub
@@ -494,15 +488,15 @@ const scrollToSection = (index) => {
                   <Button 
                     variant="ghost" 
                     size="lg" 
-                    className="bg-white/10 hover:bg-white/20 text-white"
-                    onClick={() => window.open('https://www.linkedin.com/in/YourLinkedInProfile', '_blank')}
+                    className="bg-white/10 hover:bg-white/20 text-white w-full md:w-auto justify-center"
+                    onClick={() => window.open('https://www.linkedin.com/in/victor-gonçalves-98708a349/', '_blank')}
                   >
                     <Linkedin className="mr-2 h-4 w-4" /> LinkedIn
                   </Button>
                   <Button 
-                    variant="ghost" 
-                    size="lg" 
-                    className="bg-white/10 hover:bg-white/20 text-white"
+                      variant="ghost" 
+                      size="lg" 
+                      className="bg-white/10 hover:bg-white/20 text-white w-full md:w-auto justify-center"
                     onClick={() => window.location.href = 'mailto:victorestanislau2005@gmail.com'}
                   >
                     <Mail className="mr-2 h-4 w-4" /> Contact
