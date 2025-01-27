@@ -6,7 +6,8 @@ import { Github, Linkedin, Mail, ArrowRight, ArrowLeft, Menu, X, ExternalLink, C
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-
+import HeroDecoration from '@/components/ui/HeroDecoration';
+import ScrollHint from '@/components/ui/ScrollHint';
 
 const Portfolio = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -69,38 +70,45 @@ const Portfolio = () => {
     { id: 'journey', label: 'Journey', icon: BookMarked },
     { id: 'projects', label: 'Projects', icon: Terminal }
   ];
-
+  
   const journey = [
     {
-      year: "2024",
-      title: "Starting in business",
-      location: "Quantium Labs",
-      description: "Co-founded Quantium Labs with two partners, focusing on innovative tech solutions. There I built most of my web development skills building projects for clients.",
-      skills: ["ReactJS", "TailwindCSS", "Project Management", "Team Leadership"]
+        year: "2025",
+        title: "Computer Science Student",
+        location: "Instituto Federal de Minas Gerais (IFMG) – Ibirité",
+        description: "Currently pursuing my degree in Computer Science at IFMG campus Ibirité while still living in Belo Horizonte. Focused on deepening my understanding of fundamental and advanced computer science concepts.",
+        skills: ["Data Structures", "Algorithms", "Software Engineering", "Computer Science", "Operating Systems", "Computer Architecture"]
     },
     {
-      year: "2023",
-      title: "Web Development Journey",
-      location: "Self-taught",
-      description: "Transitioned to web development, diving deep into modern technologies and frameworks. Focused on building practical applications and expanding my technical toolkit.",
-      skills: ["JavaScript", "ReactJS", "TailwindCSS", "Modern Web Dev"]
+        year: "2024",
+        title: "Software Developer at Quantium Labs",
+        location: "Quantium Labs",
+        description: "Continuing my journey at Quantium Labs, working on various software projects while improving my technical and problem-solving skills.",
+        skills: ["ReactJS", "TailwindCSS", "Project Management", "Team Leadership", "System Design"]
     },
     {
-      year: "2022",
-      title: "Data Science Explorer",
-      location: "Self-taught",
-      description: "Discovered and explored data science, focusing on machine learning and deep learning frameworks. Learned to build and train neural networks.",
-      skills: ["Neural Networks", "TensorFlow", "PyTorch", "Data Science", "Numpy"]
+        year: "2023",
+        title: "Web Development Journey",
+        location: "Self-taught",
+        description: "Transitioned to web development, diving deep into modern technologies and frameworks. Focused on building practical applications and expanding my technical toolkit.",
+        skills: ["JavaScript", "ReactJS", "TailwindCSS", "Modern Web Dev"]
     },
     {
-      year: "2021",
-      title: "Programming Beginnings",
-      location: "First Projects",
-      description: "Started my programming journey at age 15. Created my first significant project: a Discord bot for playing YouTube music, which sparked my passion for development.",
-      skills: ["Python", "Discord.js", "Basic Programming"],
+        year: "2022",
+        title: "Data Science Explorer",
+        location: "Self-taught",
+        description: "Discovered and explored data science, focusing on machine learning and deep learning frameworks. Learned to build and train neural networks.",
+        skills: ["Neural Networks", "TensorFlow", "PyTorch", "Data Science", "Numpy"]
+    },
+    {
+        year: "2021",
+        title: "Programming Beginnings",
+        location: "First Projects",
+        description: "Started my programming journey at age 15. Created my first significant project: a Discord bot for playing YouTube music, which sparked my passion for development.",
+        skills: ["Python", "Discord.js", "Basic Programming"]
     }
+];
 
-  ];
   useEffect(() => {
     const handleMouseMove = (e) => {
       const x = (e.clientX / window.innerWidth) * 100;
@@ -177,7 +185,6 @@ const Portfolio = () => {
         { name: "Docker", svgUrl: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/f399628e99a19c1c6480ad95aace0e3a41b51dbe/main/docker.svg" },
         { name: "CI/CD", svgUrl: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/f399628e99a19c1c6480ad95aace0e3a41b51dbe/main/cicd.svg" },
         { name: "Jest", svgUrl: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/f399628e99a19c1c6480ad95aace0e3a41b51dbe/main/jest.svg" },
-        { name: "Webpack", svgUrl: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/f399628e99a19c1c6480ad95aace0e3a41b51dbe/main/webpack.svg" }
       ]
     }
   ];
@@ -411,117 +418,123 @@ const scrollToSection = (index) => {
           className="h-screen snap-start flex items-center relative"
         >
          <motion.div 
-            className="container mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center pt-20 md:pt-0"
-
+        className="container mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center pt-20 md:pt-0"
+        variants={{
+          hidden: { opacity: 0 },
+          visible: {
+            opacity: 1,
+            transition: {
+              staggerChildren: 0.2,
+              delayChildren: 0.5
+            }
+          }
+        }}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* Left Column - Content */}
+        <motion.div 
+          className="space-y-6"
+          variants={{
+            hidden: { opacity: 0, y: 20 },
+            visible: { opacity: 1, y: 0 }
+          }}
+        >
+          {/* Badges */}
+          <motion.div 
+            className="flex flex-wrap gap-3"
             variants={{
-              hidden: { opacity: 0 },
-              visible: {
-                opacity: 1,
-                transition: {
-                  staggerChildren: 0.2,
-                  delayChildren: 1.5
-                }
-              }
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 }
             }}
-            initial="hidden"
-            animate="visible"
           >
-            <motion.div 
-              className="space-y-6"
-              variants={{
-                hidden: { opacity: 0, y: 20 },
-                visible: { opacity: 1, y: 0 }
-              }}
-            >
-              <motion.div 
-                className="flex flex-wrap gap-2"
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 }
-                }}
-              >
-                <Badge className="text-sm border-zinc-800/50 text-zinc-300 bg-zinc-900/50">
-                  Full Stack Developer
-                </Badge>
-                <Badge className="text-sm border-zinc-800/50 text-zinc-300 bg-zinc-900/50">
-                  Co-founder at Quantium Labs
-                </Badge>
-              </motion.div>
-              
-              <motion.h1 
-                className="text-5xl lg:text-7xl font-bold font-serif text-zinc-50"
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 }
-                }}
-              >
-                Victor Humberto
-              </motion.h1>
-              
-              <motion.p 
-                className="text-lg text-zinc-400 max-w-xl"
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 }
-                }}
-              >
-                Full-stack developer passionate about building innovative solutions. 
-                Currently co-leading Quantium Labs's technical initiatives and persuing my degree in Computer Science.
-              </motion.p>
-              
-              <motion.div 
-                className="flex flex-col md:flex-row gap-4 w-full"
-                variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  visible: { opacity: 1, y: 0 }
-                }}
-              >
-    
-              <Button 
-                variant="ghost" 
-                size="lg" 
-                className="bg-white/10 hover:bg-white/20 text-white w-full md:w-auto justify-center"
-                    onClick={() => window.open('https://github.com/VictorHumberto01', '_blank')}
-                  >
-                    <Github className="mr-2 h-4 w-4" /> GitHub
-                  </Button>
-                  <Button 
-                    variant="ghost" 
-                    size="lg" 
-                    className="bg-white/10 hover:bg-white/20 text-white w-full md:w-auto justify-center"
-                    onClick={() => window.open('https://www.linkedin.com/in/victor-gonçalves-98708a349/', '_blank')}
-                  >
-                    <Linkedin className="mr-2 h-4 w-4" /> LinkedIn
-                  </Button>
-                  <Button 
-                      variant="ghost" 
-                      size="lg" 
-                      className="bg-white/10 hover:bg-white/20 text-white w-full md:w-auto justify-center"
-                    onClick={() => window.location.href = 'mailto:victorestanislau2005@gmail.com'}
-                  >
-                    <Mail className="mr-2 h-4 w-4" /> Contact
-                </Button>
-              </motion.div>
-            </motion.div>
-            
-            <motion.div 
-              className="relative h-full"
-              variants={{
-                hidden: { opacity: 0, scale: 0.9 },
-                visible: { 
-                  opacity: 1, 
-                  scale: 1,
-                  transition: {
-                    duration: 0.8,
-                    ease: "easeOut"
-                  }
-                }
-              }}
-            >
-            </motion.div>
+            <Badge variant="secondary" className="bg-zinc-900/50 text-zinc-300 border-zinc-700/50 px-4 py-1.5">
+              Full Stack Developer
+            </Badge>
+            <Badge variant="secondary" className="bg-zinc-900/50 text-zinc-300 border-zinc-700/50 px-4 py-1.5">
+              Co-founder at Quantium Labs
+            </Badge>
           </motion.div>
           
-        </section>
+          {/* Name */}
+          <motion.h1 
+            className="text-5xl lg:text-7xl font-bold font-serif tracking-tight text-zinc-50"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 }
+            }}
+          >
+            Victor Humberto
+          </motion.h1>
+          
+          {/* Description */}
+          <motion.p 
+            className="text-lg text-zinc-400 max-w-xl leading-relaxed"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 }
+            }}
+          >
+            Full-stack developer passionate about building innovative solutions. 
+            Currently co-leading Quantium Labs's technical initiatives and pursuing my degree in Computer Science.
+          </motion.p>
+          
+          {/* Social Links */}
+          <motion.div 
+            className="flex flex-col sm:flex-row gap-4 pt-4"
+            variants={{
+              hidden: { opacity: 0, y: 20 },
+              visible: { opacity: 1, y: 0 }
+            }}
+          >
+            <Button 
+              variant="secondary" 
+              size="lg" 
+              className="bg-zinc-900/50 hover:bg-zinc-800/50 text-zinc-300 border-zinc-700/50 transition-colors duration-300"
+              onClick={() => window.open('https://github.com/VictorHumberto01', '_blank')}
+            >
+              <Github className="mr-2 h-5 w-5" /> GitHub
+            </Button>
+            <Button 
+              variant="secondary" 
+              size="lg" 
+              className="bg-zinc-900/50 hover:bg-zinc-800/50 text-zinc-300 border-zinc-700/50 transition-colors duration-300"
+              onClick={() => window.open('https://www.linkedin.com/in/victor-gonçalves-98708a349/', '_blank')}
+            >
+              <Linkedin className="mr-2 h-5 w-5" /> LinkedIn
+            </Button>
+            <Button 
+              variant="secondary" 
+              size="lg" 
+              className="bg-zinc-900/50 hover:bg-zinc-800/50 text-zinc-300 border-zinc-700/50 transition-colors duration-300"
+              onClick={() => window.location.href = 'mailto:victorestanislau2005@gmail.com'}
+            >
+              <Mail className="mr-2 h-5 w-5" /> Contact
+            </Button>
+          </motion.div>
+        </motion.div>
+        
+        {/* Right Column - Decoration */}
+        <motion.div 
+         className="hidden lg:block h-full w-full relative"  // Updated className
+        variants={{
+            hidden: { opacity: 0, scale: 0.9 },
+            visible: { 
+              opacity: 1, 
+              scale: 1,
+              transition: {
+                duration: 0.8,
+                ease: "easeOut"
+              }
+            }
+          }}
+        >
+          <HeroDecoration />
+        </motion.div>
+      </motion.div>
+      <ScrollHint />
+
+    </section>
 
         {/* Skills Section */}
         <section 
