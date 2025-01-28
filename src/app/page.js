@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowRight, ArrowLeft, Menu, X, ExternalLink, Code2, BookOpen, Briefcase, BookMarked, User, Terminal, ChevronDown, Calendar } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowRight, ArrowLeft, Menu, X, ExternalLink, Code2, BookOpen, Briefcase, BookMarked, User, Terminal, ChevronDown, Calendar, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -186,7 +186,7 @@ const Portfolio = () => {
         { name: "CI/CD", svgUrl: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/f399628e99a19c1c6480ad95aace0e3a41b51dbe/main/cicd.svg" },
         { name: "Jest", svgUrl: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/f399628e99a19c1c6480ad95aace0e3a41b51dbe/main/jest.svg" },
       ]
-    }
+    },
   ];
 
   const projects = [
@@ -299,7 +299,7 @@ const scrollToSection = (index) => {
     
           {/* Mobile Navigation */}
           {isMobile && (
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-900/30 backdrop-blur-sm p-4 flex justify-between items-center">
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-900/30 backdrop-blur-xl p-4 flex justify-between items-center">
           <Button 
             variant="ghost" 
             size="icon" 
@@ -448,11 +448,13 @@ const scrollToSection = (index) => {
               visible: { opacity: 1, y: 0 }
             }}
           >
-            <Badge variant="secondary" className="bg-zinc-900/50 text-zinc-300 border-zinc-700/50 px-4 py-1.5">
-              Full Stack Developer
-            </Badge>
-            <Badge variant="secondary" className="bg-zinc-900/50 text-zinc-300 border-zinc-700/50 px-4 py-1.5">
+            <Badge variant="secondary" className="bg-zinc-900/50 text-zinc-300 hover:bg-blue-500/20 border-zinc-700/50 px-4 py-1.5">
               Co-founder at Quantium Labs
+            </Badge>
+
+            <Badge variant="secondary" className="bg-zinc-900/50 text-zinc-300 hover:bg-blue-500/20 border-zinc-700/50 px-4 py-1.5">
+              <MapPin className="w-4 h-4 mr-1 inline" />
+              Belo Horizonte, MG
             </Badge>
           </motion.div>
           
