@@ -2,12 +2,230 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, Linkedin, Mail, ArrowRight, ArrowLeft, Menu, X, ExternalLink, Code2, BookOpen, Briefcase, BookMarked, User, Terminal, ChevronDown, Calendar, MapPin } from 'lucide-react';
+
+import { Github, Linkedin, Mail, ArrowRight, ArrowLeft, Menu, Loader2, X, ExternalLink, Code2, BookOpen, Briefcase, BookMarked, User, Terminal, ChevronDown, Calendar, MapPin } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import HeroDecoration from '@/components/ui/HeroDecoration';
 import ScrollHint from '@/components/ui/ScrollHint';
+
+
+// Deterministic pseudo-random number generator based on a seed
+const deterministicRandom = (seed) => {
+  let x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+};
+
+const LoadingScreen = () => {
+  const particles = Array(40).fill();
+  const lines = Array(20).fill();
+
+  return (
+    <motion.div 
+      className="fixed inset-0 z-50 bg-zinc-950 flex items-center justify-center overflow-hidden"
+      initial={{ opacity: 1 }}
+      exit={{ 
+        opacity: 0,
+        transition: { 
+          duration: 0.6, 
+          ease: [0.22, 1, 0.36, 1],
+          delay: 0.2 
+        }
+      }}
+    >
+      {/* Subtle grid foundation */}
+      <div className="absolute inset-0 grid grid-cols-12 grid-rows-8 gap-px opacity-5">
+        {Array(96).fill().map((_, i) => (
+          <div key={i} className="bg-blue-500/10" />
+        ))}
+      </div>
+
+      {/* Main loader container */}
+      <div className="relative z-20 flex flex-col items-center gap-8 p-8">
+        {/* Floating cube with particle halo */}
+        <motion.div 
+          className="relative w-40 h-40"
+          animate={{
+            rotate: [0, 180, 360],
+            scale: [1, 1.05, 1]
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "linear"
+          }}
+        >
+          {/* Particle halo */}
+          {particles.map((_, i) => {
+            const x1 = deterministicRandom(i) * 100 - 50;
+            const x2 = deterministicRandom(i + 1000) * 100 - 50;
+            const y1 = deterministicRandom(i + 2000) * 100 - 50;
+            const y2 = deterministicRandom(i + 3000) * 100 - 50;
+            const duration = 3 + deterministicRandom(i + 4000) * 2;
+            const delay = deterministicRandom(i + 5000) * 2;
+
+            return (
+              <motion.div
+                key={i}
+                className="absolute w-1 h-1 bg-blue-400 rounded-full"
+                style={{
+                  left: '50%',
+                  top: '50%',
+                  x: "-50%",
+                  y: "-50%"
+                }}
+                animate={{
+                  x: [`${x1}%`, `${x2}%`],
+                  y: [`${y1}%`, `${y2}%`],
+                  scale: [0, 1, 0],
+                  opacity: [0, 0.8, 0]
+                }}
+                transition={{
+                  duration: duration,
+                  repeat: Infinity,
+                  delay: delay,
+                  ease: "easeInOut"
+                }}
+              />
+            );
+          })}
+        </motion.div>
+
+        {/* Dynamic line network */}
+        <div className="absolute inset-0 pointer-events-none">
+          {lines.map((_, i) => {
+            const left = deterministicRandom(i) * 100;
+            const top = deterministicRandom(i + 100) * 100;
+            const width = deterministicRandom(i + 200) * 20 + 10;
+            const rotate = deterministicRandom(i + 300) * 360;
+            const x1 = deterministicRandom(i + 400) * 100 - 50;
+            const x2 = deterministicRandom(i + 500) * 100 - 50;
+            const duration = 4 + deterministicRandom(i + 600) * 4;
+
+            return (
+              <motion.div
+                key={i}
+                className="absolute h-px bg-gradient-to-r from-blue-400/20 to-transparent"
+                style={{
+                  left: `${left}%`,
+                  top: `${top}%`,
+                  width: `${width}%`,
+                  rotate: `${rotate}deg`
+                }}
+                animate={{
+                  opacity: [0, 0.3, 0],
+                  x: [`${x1}%`, `${x2}%`]
+                }}
+                transition={{
+                  duration: duration,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              />
+            );
+          })}
+        </div>
+
+        {/* Modern progress indicator */}
+        <div className="relative w-64 h-1 bg-zinc-800/50 rounded-full overflow-hidden">
+          <motion.div
+            className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-blue-400 to-blue-600 origin-left"
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            transition={{ duration: 2.5, ease: [0.83, 0, 0.17, 1] }}
+          />
+          <motion.div
+            className="absolute right-0 w-1 h-full bg-blue-400"
+            animate={{
+              x: ['-100%', '100%'],
+              opacity: [0, 0.8, 0]
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        </div>
+
+        {/* Abstract pattern display */}
+        <motion.div
+          className="flex gap-2 text-blue-400/60 text-xl"
+          animate={{
+            opacity: [0.4, 0.8, 0.4]
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity
+          }}
+        >
+          {Array(6).fill().map((_, i) => (
+            <motion.span
+              key={i}
+              animate={{
+                y: [0, -5, 0],
+                scale: [1, 1.2, 1]
+              }}
+              transition={{
+                duration: 1.5,
+                delay: i * 0.1,
+                repeat: Infinity
+              }}
+            >
+            </motion.span>
+          ))}
+        </motion.div>
+
+        {/* Light pulse effect */}
+        <motion.div
+          className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1)_0%,transparent_70%)]"
+          animate={{
+            opacity: [0, 0.3, 0],
+            scale: [1, 1.5, 2]
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity
+          }}
+        />
+      </div>
+
+      {/* Dynamic light streaks */}
+      <div className="absolute inset-0 overflow-hidden">
+        {Array(10).fill().map((_, i) => {
+          const left = deterministicRandom(i + 7000) * 100;
+          const top = deterministicRandom(i + 8000) * 100;
+          const rotate = deterministicRandom(i + 9000) * 360;
+          const duration = 4 + deterministicRandom(i + 10000) * 4;
+          const delay = deterministicRandom(i + 11000) * 2;
+
+          return (
+            <motion.div
+              key={i}
+              className="absolute w-1/2 h-px bg-gradient-to-r from-blue-400/20 to-transparent"
+              style={{
+                left: `${left}%`,
+                top: `${top}%`,
+                rotate: `${rotate}deg`
+              }}
+              animate={{
+                x: ['-100%', '200%'],
+                opacity: [0, 0.4, 0]
+              }}
+              transition={{
+                duration: duration,
+                delay: delay,
+                repeat: Infinity,
+                ease: "linear"
+              }}
+            />
+          );
+        })}
+      </div>
+    </motion.div>
+  );
+};
 
 const Portfolio = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -233,6 +451,10 @@ const scrollToSection = (index) => {
       transition={{ duration: 0.8 }}
       className="relative bg-zinc-950 text-zinc-50 overflow-x-hidden"
     >
+      <AnimatePresence>
+        {isLoading && <LoadingScreen />}
+      </AnimatePresence>
+      
       {/* Background Effects */}
       <div className="fixed inset-0 pointer-events-none">
         <motion.div 
