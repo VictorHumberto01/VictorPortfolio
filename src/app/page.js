@@ -192,7 +192,7 @@ const Portfolio = () => {
   const projects = [
     {
       title: "Aline Nery Portfolio",
-      description: "A personal Portfolio page and event ticket selling system developed for a executive coach under Quantium Labs with NextJS . Features a complete admin dashboard for managing events and tickets.",
+      description: "A personal Portfolio page and event ticket selling system developed for a executive coach under Quantium Labs with NextJS. Features a complete admin dashboard for managing events and tickets.",
       banner: "/images/aline.png",
       projectUrl: "https://alinenery.com.br",
 
