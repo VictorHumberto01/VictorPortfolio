@@ -1,7 +1,7 @@
 # Hey there! 👋 Welcome to my Portfolio repository.
 
 ## What's this? 🎨
-This is the repository for my personal portfolio website where I showcase my projects, skills, and a bit about who I am! I built this to share as a full stack dev and the path I took learning the technologies I love.
+This repository contains the source code for my personal portfolio website, where I highlight my projects, showcase my skills, and share a bit about my journey as a full-stack developer. I built this site to reflect the technologies I’m passionate about and the learning path I’ve followed. While the code and repository might not be the most polished, it wasn’t originally meant to be public—only recently did I decide to share it with the world.
 
 ## Check it out live! 🚀
 https://victor-humberto.vercel.app
