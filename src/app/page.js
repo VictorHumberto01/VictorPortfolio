@@ -913,7 +913,17 @@ const scrollToSection = (index) => {
               ))}
             </div>
           </motion.div>
-          <h1 className='text-center mb-10 text-1xl text-zinc-400 font-bold'>Made with ❤️ by Victor</h1>
+          <div className="text-center mb-10 text-1xl text-zinc-400 font-bold">
+            Made with ❤️ by Victor.{' '}
+            <a 
+              href="https://github.com/VictorHumberto01/VictorPortfolio" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-blue-400 hover:underline"
+            >
+              Visit this website code on my GitHub page
+            </a>
+          </div>
 
           <ContactFooter />
           </section>
