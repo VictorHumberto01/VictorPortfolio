@@ -2,13 +2,13 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-import { Github, Linkedin, Mail, ArrowRight, ArrowLeft, Menu, Loader2, X, ExternalLink, Code2, BookOpen, Briefcase, BookMarked, User, Terminal, ChevronDown, Calendar, MapPin } from 'lucide-react';
+import { ArrowRight, Menu, X, ExternalLink, Code2, Briefcase, BookMarked, User, Terminal, ChevronDown, Calendar } from 'lucide-react';
+import { SiGithub, SiLinkedin } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import HeroDecoration from '@/components/ui/HeroDecoration';
-import ScrollHint from '@/components/ui/ScrollHint';
+import AnimatedHero from '@/components/ui/Hero';
+import ContactFooter from '@/components/ui/ContactFooter';
 
 
 // Deterministic pseudo-random number generator based on a seed
@@ -229,8 +229,8 @@ const LoadingScreen = () => {
 
 const Portfolio = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [isHovering, setIsHovering] = useState(false);
-  const [currentProject, setCurrentProject] = useState(0);
+  // Removed isHovering as it is unused for hover effects
+  // Removed currentProject state as it is never used
   const [currentSection, setCurrentSection] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const sectionsRef = useRef([]);
@@ -451,6 +451,7 @@ const scrollToSection = (index) => {
       transition={{ duration: 0.8 }}
       className="relative bg-zinc-950 text-zinc-50 overflow-x-hidden"
     >
+      
       <AnimatePresence>
         {isLoading && <LoadingScreen />}
       </AnimatePresence>
@@ -461,10 +462,11 @@ const scrollToSection = (index) => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-blue-500/20 via-transparent to-transparent transition-all duration-200"
-          style={{
-            backgroundPosition: `${mousePosition.x}% ${mousePosition.y}%`,
-            opacity: isHovering ? 1 : 0.5,
+          className="absolute inset-0 bg-cover bg-fixed"
+          style={{ 
+            backgroundImage: "url('/background.jpg')",
+            opacity: 0.3,
+            transform: `translate(${(mousePosition.x - 50) * 0.1}px, ${(mousePosition.y - 50) * 0.1}px)`
           }}
         />
         <motion.div 
@@ -474,7 +476,7 @@ const scrollToSection = (index) => {
           className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-zinc-800/20 via-zinc-900/40 to-zinc-950"
           style={{
             backgroundPosition: `${100 - mousePosition.x}% ${100 - mousePosition.y}%`,
-            backgroundSize: '120% 120%',
+            backgroundSize: '150% 100%',
           }}
         />
         <motion.div 
@@ -487,19 +489,7 @@ const scrollToSection = (index) => {
             left: `${mousePosition.x}%`,
             top: `${mousePosition.y}%`,
             transform: 'translate(-50%, -50%)',
-            opacity: isHovering ? 1 : 0.5,
-          }}
-        />
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.2 }}
-          transition={{ duration: 1, delay: 1.1 }}
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `linear-gradient(to right, rgb(59 130 246 / 0.1) 1px, transparent 1px),
-                           linear-gradient(to bottom, rgb(59 130 246 / 0.1) 1px, transparent 1px)`,
-            backgroundSize: '50px 50px',
-            transform: `translate(${(mousePosition.x - 50) * 0.1}px, ${(mousePosition.y - 50) * 0.1}px)`,
+            opacity: 1,
           }}
         />
         <motion.div 
@@ -563,21 +553,21 @@ const scrollToSection = (index) => {
                   className="bg-white/10 hover:bg-white/20 text-white"
                   onClick={() => window.open('https://github.com/VictorHumberto01', '_blank')}
                 >
-                  <Github className="mr-2 h-4 w-4" /> GitHub
+                  <SiGithub className="mr-2 h-4 w-4" /> GitHub
                 </Button>
                 <Button 
                   variant="outline"
                   className="bg-white/10 hover:bg-white/20 text-white"
                   onClick={() => window.open('https://www.linkedin.com/in/victor-gonçalves-98708a349/', '_blank')}
                 >
-                  <Linkedin className="mr-2 h-4 w-4" /> LinkedIn
+                  <SiLinkedin className="mr-2 h-4 w-4" /> LinkedIn
                 </Button>
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-
+        
       {/* Enhanced Animated Navigation */}
       {!isMobile && (
         <nav className="fixed right-8 top-1/2 -translate-y-1/2 z-50">
@@ -633,130 +623,16 @@ const scrollToSection = (index) => {
       </nav>
       )}
       
+      
       <div className={`${isMobile ? 'overflow-y-auto' : 'h-screen snap-y snap-mandatory overflow-y-scroll'}`}>
+        
         {/* Hero Section */}
         <section 
+        
           ref={el => sectionsRef.current[0] = el}
           className="h-screen snap-start flex items-center relative"
         >
-         <motion.div 
-        className="container mx-auto px-4 md:px-6 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center pt-20 md:pt-0"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: {
-            opacity: 1,
-            transition: {
-              staggerChildren: 0.2,
-              delayChildren: 0.5
-            }
-          }
-        }}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* Left Column - Content */}
-        <motion.div 
-          className="space-y-6"
-          variants={{
-            hidden: { opacity: 0, y: 20 },
-            visible: { opacity: 1, y: 0 }
-          }}
-        >
-          {/* Badges */}
-          <motion.div 
-            className="flex flex-wrap gap-3"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 }
-            }}
-          >
-            <Badge variant="secondary" className="bg-zinc-900/50 text-zinc-300 hover:bg-blue-500/20 border-zinc-700/50 px-4 py-1.5">
-              Co-founder at Quantium Labs
-            </Badge>
-
-            <Badge variant="secondary" className="bg-zinc-900/50 text-zinc-300 hover:bg-blue-500/20 border-zinc-700/50 px-4 py-1.5">
-              <MapPin className="w-4 h-4 mr-1 inline" />
-              Belo Horizonte, MG
-            </Badge>
-          </motion.div>
-          
-          {/* Name */}
-          <motion.h1 
-            className="text-5xl lg:text-7xl font-bold font-serif tracking-tight text-zinc-50"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 }
-            }}
-          >
-            Victor Humberto
-          </motion.h1>
-          
-          {/* Description */}
-          <motion.p 
-            className="text-lg text-zinc-400 max-w-xl leading-relaxed"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 }
-            }}
-          >
-            Full-stack developer passionate about building innovative solutions. 
-            Currently co-leading Quantium Labs's technical initiatives and pursuing my degree in Computer Science.
-          </motion.p>
-          
-          {/* Social Links */}
-          <motion.div 
-            className="flex flex-col sm:flex-row gap-4 pt-4"
-            variants={{
-              hidden: { opacity: 0, y: 20 },
-              visible: { opacity: 1, y: 0 }
-            }}
-          >
-            <Button 
-              variant="secondary" 
-              size="lg" 
-              className="bg-zinc-900/50 hover:bg-zinc-800/50 text-zinc-300 border-zinc-700/50 transition-colors duration-300"
-              onClick={() => window.open('https://github.com/VictorHumberto01', '_blank')}
-            >
-              <Github className="mr-2 h-5 w-5" /> GitHub
-            </Button>
-            <Button 
-              variant="secondary" 
-              size="lg" 
-              className="bg-zinc-900/50 hover:bg-zinc-800/50 text-zinc-300 border-zinc-700/50 transition-colors duration-300"
-              onClick={() => window.open('https://www.linkedin.com/in/victor-gonçalves-98708a349/', '_blank')}
-            >
-              <Linkedin className="mr-2 h-5 w-5" /> LinkedIn
-            </Button>
-            <Button 
-              variant="secondary" 
-              size="lg" 
-              className="bg-zinc-900/50 hover:bg-zinc-800/50 text-zinc-300 border-zinc-700/50 transition-colors duration-300"
-              onClick={() => window.location.href = 'mailto:victorestanislau2005@gmail.com'}
-            >
-              <Mail className="mr-2 h-5 w-5" /> Contact
-            </Button>
-          </motion.div>
-        </motion.div>
-        
-        {/* Right Column - Decoration */}
-        <motion.div 
-         className="hidden lg:block h-full w-full relative"  // Updated className
-        variants={{
-            hidden: { opacity: 0, scale: 0.9 },
-            visible: { 
-              opacity: 1, 
-              scale: 1,
-              transition: {
-                duration: 0.8,
-                ease: "easeOut"
-              }
-            }
-          }}
-        >
-          <HeroDecoration />
-        </motion.div>
-      </motion.div>
-      <ScrollHint />
+         <AnimatedHero/>
 
     </section>
 
@@ -778,7 +654,7 @@ const scrollToSection = (index) => {
               className="relative z-10"
             >
               <h2 className="text-3xl font-bold text-zinc-50 mb-2">Skills & Expertise</h2>
-              <p className="text-zinc-400 mb-8">My technical toolbox</p>
+              <p className="text-zinc-400 mb-8">My tech stack</p>
             </motion.div>
 
             <motion.div 
@@ -1039,7 +915,8 @@ const scrollToSection = (index) => {
           </motion.div>
           <h1 className='text-center mb-10 text-1xl text-zinc-400 font-bold'>Made with ❤️ by Victor</h1>
 
-        </section>
+          <ContactFooter />
+          </section>
       </div>
     </motion.div>
   );
