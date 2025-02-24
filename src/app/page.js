@@ -633,16 +633,15 @@ const scrollToSection = (index) => {
 
         {/* Skills Section */}
         <section 
-            ref={el => sectionsRef.current[2] = el} 
-            className="h-screen snap-start flex items-center relative"
-        >
+          ref={el => sectionsRef.current[2] = el} 
+          className="h-screen snap-start flex items-center relative"
+      >
         <motion.div 
           className="container mx-auto px-4 py-24"
           initial={{ opacity: 0 }}
           animate={currentSection === 2 ? { opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
         >
-        
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={currentSection === 2 ? { opacity: 1, y: 0 } : {}}
@@ -655,17 +654,22 @@ const scrollToSection = (index) => {
 
           <motion.div 
             className="grid grid-cols-1 md:grid-cols-2 gap-8"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={currentSection === 2 ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0 }}
+            animate={currentSection === 2 ? { opacity: 1 } : {}}
+            transition={{ duration: 0.5 }}
           >
-        {skills.map((category, categoryIndex) => (
+            {skills.map((category, categoryIndex) => (
               <motion.div
                 key={category.name}
                 className="space-y-6"
-                initial={{ opacity: 0, x: -50 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: categoryIndex * 0.2 }}
+                initial={{ opacity: 0, x: categoryIndex % 2 === 0 ? -50 : 50 }}
+                animate={currentSection === 2 ? { opacity: 1, x: 0 } : {}}
+                transition={{ 
+                  duration: 0.5, 
+                  delay: categoryIndex * 0.3,
+                  type: "spring",
+                  stiffness: 100
+                }}
               >
                 <h3 className="text-xl font-semibold text-zinc-50">{category.name}</h3>
                 <div className="grid grid-cols-2 gap-4">
@@ -673,19 +677,19 @@ const scrollToSection = (index) => {
                     <motion.div
                       key={item.name}
                       className="flex items-center gap-3 p-3 bg-zinc-800/30 rounded-lg backdrop-blur-sm hover:bg-zinc-700/30 transition-all duration-300"
-                      initial={{ opacity: 0, y: 20, scale: 0.9, rotate: -30 }}
-                      animate={{
+                      initial={{ opacity: 0, y: 20, scale: 0.9 }}
+                      animate={currentSection === 2 ? {
                         opacity: 1,
                         y: 0,
                         scale: 1,
-                        rotate: 0,
                         transition: {
-                          delay: index * 0.1,
-                          duration: 0.2,
-                          ease: "easeOut" // Add a bounce effect
+                          delay: categoryIndex * 0.3 + index * 0.1 + 0.2,
+                          duration: 0.4,
+                          type: "spring",
+                          stiffness: 100
                         }
-                      }}
-                      whileHover={{ scale: 1.1, y: -5 }}
+                      } : {}}
+                      whileHover={{ scale: 1.05, y: -5 }}
                       whileTap={{ scale: 0.95 }}
                     >
                       <img
@@ -700,9 +704,9 @@ const scrollToSection = (index) => {
                 </div>
               </motion.div>
             ))}
-            </motion.div>
           </motion.div>
-        </section>
+        </motion.div>
+      </section>
 
         {/* Journey Section */}
         <section 
