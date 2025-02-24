@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Menu, X, ExternalLink, Code2, Briefcase, BookMarked, User, Terminal, ChevronDown, Calendar } from 'lucide-react';
+import { ArrowRight, Menu, X, ExternalLink, Code2, Briefcase, BookMarked, User, Terminal, ChevronDown, Calendar, HomeIcon } from 'lucide-react';
 import { SiGithub, SiLinkedin } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
@@ -10,12 +10,6 @@ import { Badge } from '@/components/ui/badge';
 import AnimatedHero from '@/components/ui/Hero';
 import ContactFooter from '@/components/ui/ContactFooter';
 
-
-// Deterministic pseudo-random number generator based on a seed
-const deterministicRandom = (seed) => {
-  let x = Math.sin(seed) * 10000;
-  return x - Math.floor(x);
-};
 
 const Portfolio = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -65,7 +59,8 @@ const Portfolio = () => {
 
   
   const sections = [
-    { id: 'home', label: 'Home', icon: User },
+    { id: 'home', label: 'Home', icon: HomeIcon },
+    { id: 'about', label: 'About', icon: User }, 
     { id: 'skills', label: 'Skills', icon: Code2 },
     { id: 'journey', label: 'Journey', icon: BookMarked },
     { id: 'projects', label: 'Projects', icon: Terminal }
@@ -415,14 +410,12 @@ const scrollToSection = (index) => {
          <AnimatedHero/>
 
     </section>
-
-        {/* Skills Section */}
-        <section 
-          ref={el => sectionsRef.current[1] = el}
-          className="h-screen snap-start flex items-center relative"
+    <section 
+            ref={el => sectionsRef.current[1] = el}
+            className="min-h-screen snap-start flex items-center relative py-20 md:py-24"
         >
           <motion.div 
-            className="container mx-auto px-4 py-24"
+            className="container mx-auto px-4"
             initial={{ opacity: 0 }}
             animate={currentSection === 1 ? { opacity: 1 } : {}}
             transition={{ duration: 0.8 }}
@@ -433,17 +426,240 @@ const scrollToSection = (index) => {
               transition={{ duration: 0.5 }}
               className="relative z-10"
             >
-              <h2 className="text-3xl font-bold text-zinc-50 mb-2">Skills & Expertise</h2>
-              <p className="text-zinc-400 mb-8">My tech stack</p>
+              <h2 className="text-3xl font-bold text-zinc-50 mb-2">About Me</h2>
+              <p className="text-zinc-400 mb-8">My journey in tech</p>
             </motion.div>
 
-            <motion.div 
-              className="grid grid-cols-1 md:grid-cols-2 gap-8"
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={currentSection === 1 ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.8 }}
-            >
-          {skills.map((category, categoryIndex) => (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+              <motion.div 
+                initial={{ opacity: 0, x: -50 }}
+                animate={currentSection === 1 ? { 
+                  opacity: 1, 
+                  x: 0,
+                  transition: {
+                    type: "spring",
+                    stiffness: 100,
+                    damping: 12
+                  }
+                } : {}}
+                className="space-y-6"
+              >
+                <motion.div
+                  whileHover={{ 
+                    scale: 1.02,
+                    transition: { duration: 0.2 }
+                  }}
+                >
+                  <Card className="bg-zinc-900/20 border-zinc-800/30 backdrop-blur-sm transform transition-all duration-300 hover:bg-zinc-800/30 hover:border-blue-500/30">
+                    <CardContent className="p-6">
+                      <h3 className="text-xl font-semibold text-zinc-50 mb-4">My Story</h3>
+                      <p className="text-zinc-400 mb-4">
+                        Born in Sete Lagoas, Brazil, I began my programming journey at the age of 15. 
+                        What started as curiosity with a Discord bot project quickly evolved into a deep passion 
+                        for software development.
+                      </p>
+                      <p className="text-zinc-400 mb-4">
+                        As I continued studying and improving my programming skills, I delved into 
+                        Data Science, Algorithms, and Machine Learning. This knowledge led me to explore 
+                        Data Structures and essential concepts in Computer Science.
+                      </p>
+                      <p className="text-zinc-400 mb-4">
+                        Today, as a Computer Science student at IFMG and a developer at Quantium Labs, 
+                        I've transformed that early enthusiasm into professional expertise, specializing in 
+                        web development and modern application architecture. During my studies at IFMG, 
+                        I moved to Belo Horizonte, where I continue to grow both academically and professionally.
+                      </p>
+                      <p className="text-zinc-400">
+                        My passion lies in creating intuitive, efficient solutions that make a real impact. 
+                        Every project is an opportunity to learn, innovate, and push the boundaries of what’s possible.
+                      </p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={currentSection === 1 ? { 
+                    opacity: 1, 
+                    y: 0,
+                    transition: {
+                      type: "spring",
+                      stiffness: 100,
+                      damping: 12,
+                      delay: 0.2
+                    }
+                  } : {}}
+                  whileHover={{ 
+                    scale: 1.02,
+                    transition: { duration: 0.2 }
+                  }}
+                >
+                  <Card className="bg-zinc-900/20 border-zinc-800/30 backdrop-blur-sm transform transition-all duration-300 hover:bg-zinc-800/30 hover:border-blue-500/30">
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <motion.div 
+                          className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0"
+                          whileHover={{ scale: 1.1, rotate: 360 }}
+                          transition={{ duration: 0.3 }}
+                        >
+                          <BookMarked className="h-5 w-5 text-blue-400" />
+                        </motion.div>
+                        <div>
+                          <h4 className="text-zinc-200 font-medium">English Proficiency</h4>
+                          <p className="text-zinc-400">C1 Advanced Level</p>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </motion.div>
+              
+              {/* Location Info */}
+              <motion.div
+                initial={{ opacity: 0, x: 50 }}
+                animate={currentSection === 1 ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.5 }}
+              >
+                <Card className="bg-zinc-900/20 border-zinc-800/30 backdrop-blur-sm h-full">
+                  <CardContent className="p-6">
+                    <div className="flex flex-col h-full">
+                      <h3 className="text-xl font-semibold text-zinc-50 mb-4">Location & Availability</h3>
+                      
+                      <div className="space-y-6">
+                        <div className="flex items-start gap-4">
+                          <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                            <HomeIcon className="h-5 w-5 text-blue-400" />
+                          </div>
+                          <div>
+                            <h4 className="text-zinc-200 font-medium">Based in</h4>
+                            <p className="text-zinc-400">Belo Horizonte, Minas Gerais, Brazil</p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start gap-4">
+                          <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                            <Calendar className="h-5 w-5 text-blue-400" />
+                          </div>
+                          <div>
+                            <h4 className="text-zinc-200 font-medium">Time Zone</h4>
+                            <p className="text-zinc-400">UTC-3 (Brazil Time)</p>
+                            <p className="text-zinc-500 text-sm">Flexible with international schedules</p>
+                          </div>
+                        </div>
+
+                        <div className="flex items-start gap-4">
+                          <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+                            <Briefcase className="h-5 w-5 text-blue-400" />
+                          </div>
+                          <div>
+                            <h4 className="text-zinc-200 font-medium">Current Focus</h4>
+                            <p className="text-zinc-400">Computer Science Student at IFMG</p>
+                            <p className="text-zinc-500 text-sm">Open to work opportunities</p>
+                            <div className="flex items-center gap-2 mt-1">
+                              <Badge className="bg-blue-500/20 text-blue-300">
+                                Web Developer at Quantium Labs
+                              </Badge>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </div>
+
+            {/* Skills Overview */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={currentSection === 1 ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.1 }}
+                className="col-span-1"
+              >
+                <Card className="bg-zinc-900/20 border-zinc-800/30 backdrop-blur-sm h-full">
+                  <CardContent className="p-6 flex flex-col h-full">
+                    <div className="flex justify-center mb-4">
+                      <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center">
+                        <Code2 className="h-6 w-6 text-blue-400" />
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-semibold text-center text-zinc-50 mb-2">Full Stack</h3>
+                    <p className="text-zinc-400 text-center flex-grow">Specialized in modern web development with React and Node.js</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={currentSection === 1 ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.2 }}
+                className="col-span-1"
+              >
+                <Card className="bg-zinc-900/20 border-zinc-800/30 backdrop-blur-sm h-full">
+                  <CardContent className="p-6 flex flex-col h-full">
+                    <div className="flex justify-center mb-4">
+                      <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center">
+                        <Terminal className="h-6 w-6 text-blue-400" />
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-semibold text-center text-zinc-50 mb-2">Problem Solver</h3>
+                    <p className="text-zinc-400 text-center flex-grow">Strong focus on efficient and scalable solutions</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={currentSection === 1 ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="col-span-1"
+              >
+                <Card className="bg-zinc-900/20 border-zinc-800/30 backdrop-blur-sm h-full">
+                  <CardContent className="p-6 flex flex-col h-full">
+                    <div className="flex justify-center mb-4">
+                      <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center">
+                        <BookMarked className="h-6 w-6 text-blue-400" />
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-semibold text-center text-zinc-50 mb-2">Continuous Learner</h3>
+                    <p className="text-zinc-400 text-center flex-grow">Always exploring new technologies and best practices</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            </div>
+          </motion.div>
+        </section>
+
+        {/* Skills Section */}
+        <section 
+            ref={el => sectionsRef.current[2] = el} 
+            className="h-screen snap-start flex items-center relative"
+        >
+        <motion.div 
+          className="container mx-auto px-4 py-24"
+          initial={{ opacity: 0 }}
+          animate={currentSection === 2 ? { opacity: 1 } : {}}
+          transition={{ duration: 0.8 }}
+        >
+        
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={currentSection === 2 ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="relative z-10"
+          >
+            <h2 className="text-3xl font-bold text-zinc-50 mb-2">Skills & Expertise</h2>
+            <p className="text-zinc-400 mb-8">My tech stack</p>
+          </motion.div>
+
+          <motion.div 
+            className="grid grid-cols-1 md:grid-cols-2 gap-8"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={currentSection === 2 ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.8 }}
+          >
+        {skills.map((category, categoryIndex) => (
               <motion.div
                 key={category.name}
                 className="space-y-6"
@@ -490,226 +706,226 @@ const scrollToSection = (index) => {
 
         {/* Journey Section */}
         <section 
-          ref={el => sectionsRef.current[2] = el}
-          className="h-screen snap-start flex items-center relative"
+            ref={el => sectionsRef.current[3] = el} 
+            className="h-screen snap-start flex items-center relative"
         >
-          <motion.div 
-            className="container mx-auto px-4 py-24"
-            initial={{ opacity: 0 }}
-            animate={currentSection === 2 ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8 }}
+        <motion.div 
+          className="container mx-auto px-4 py-24"
+          initial={{ opacity: 0 }}
+          animate={currentSection === 3 ? { opacity: 1 } : {}}
+          transition={{ duration: 0.8 }}
+        >
+          {/* Section Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={currentSection === 3 ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="relative z-10"
           >
-            {/* Section Header */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={currentSection === 2 ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5 }}
-              className="relative z-10"
-            >
 
-              <h2 className="text-3xl font-bold text-zinc-50 mb-2">My Path in Tech</h2>
-              <p className="text-zinc-400 mb-8">From first code to founding companies</p>
-            </motion.div>
+            <h2 className="text-3xl font-bold text-zinc-50 mb-2">My Path in Tech</h2>
+            <p className="text-zinc-400 mb-8">From first code to founding companies</p>
+          </motion.div>
 
-            {/* Scroll Hint */}
-            {!isMobile && (
-            <AnimatePresence>
-              {!isScrolled && (
+          {/* Scroll Hint */}
+          {!isMobile && (
+          <AnimatePresence>
+            {!isScrolled && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className="absolute left-1/2 -translate-x-1/2 top-32 z-20 flex flex-col items-center gap-2"
+              >
+                <span className="text-zinc-400 text-sm">Scroll to explore</span>
                 <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0 }}
-                  className="absolute left-1/2 -translate-x-1/2 top-32 z-20 flex flex-col items-center gap-2"
+                  animate={{ y: [0, 5, 0] }}
+                  transition={{ duration: 1.5, repeat: Infinity }}
                 >
-                  <span className="text-zinc-400 text-sm">Scroll to explore</span>
-                  <motion.div
-                    animate={{ y: [0, 5, 0] }}
-                    transition={{ duration: 1.5, repeat: Infinity }}
-                  >
-                    <ChevronDown className="h-5 w-5 text-blue-400" />
-                  </motion.div>
+                  <ChevronDown className="h-5 w-5 text-blue-400" />
                 </motion.div>
-              )}
-            </AnimatePresence>
-            )} 
+              </motion.div>
+            )}
+          </AnimatePresence>
+          )} 
 
 
-            {/* Journey Cards */}
-            <div 
-              ref={journeyRef}
-              className="space-y-8 overflow-y-auto max-h-[65vh] pr-4 pt-4 pb-8 scroll-smooth"
-              style={{
-                maskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)',
-                WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)'
-              }}
-            >
-              {journey.map((item, index) => (
-                <motion.div
-                  key={item.year}
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={currentSection === 2 ? { opacity: 1, x: 0 } : {}}
-                  transition={{ duration: 0.5, delay: index * 0.2 }}
-                >
-                  <Card className="bg-zinc-900/20 border-zinc-800/30 backdrop-blur-sm hover:bg-zinc-900/30 transition-all duration-300 group">
-                    <CardContent className="p-6">
-                      <div className="flex items-start gap-6">
-                        {/* Year Circle with Pulse Effect */}
-                        <div className="flex-shrink-0 relative">
-                          <div className="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
-                            <Calendar className="h-5 w-5 text-blue-400 absolute opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                            <span className="text-blue-400 font-semibold group-hover:opacity-0 transition-all duration-300">{item.year}</span>
-                          </div>
-                        </div>
-
-                        <div className="space-y-4 flex-1">
-                          <div>
-                            <h3 className="text-xl font-semibold text-zinc-50 group-hover:text-blue-400 transition-colors duration-300">
-                              {item.title}
-                            </h3>
-                            <p className="text-zinc-400">{item.location}</p>
-                          </div>
-                          <p className="text-zinc-300 leading-relaxed">{item.description}</p>
-                          
-                          {/* Skills with improved styling */}
-                          <div className="flex flex-wrap gap-2">
-                            {item.skills.map((skill) => (
-                              <Badge 
-                                key={skill}
-                                variant="secondary"
-                                className="bg-zinc-800/50 text-zinc-300 hover:bg-blue-500/20 hover:text-blue-300 transition-all duration-300"
-                              >
-                                {skill}
-                              </Badge>
-                            ))}
-                          </div>
-
-                          {/* Project Link with Animation */}
-                          {item.projectLink && (
-                            <motion.div
-                              whileHover={{ x: 5 }}
-                              transition={{ duration: 0.2 }}
-                            >
-                              <Button 
-                                variant="ghost" 
-                                size="sm" 
-                                className="text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 group/btn"
-                                onClick={() => {
-                                  const element = document.querySelector(item.projectLink);
-                                  element?.scrollIntoView({ behavior: 'smooth' });
-                                }}
-                              >
-                                View Related Project
-                                <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
-                              </Button>
-                            </motion.div>
-                          )}
+          {/* Journey Cards */}
+          <div 
+            ref={journeyRef}
+            className="space-y-8 overflow-y-auto max-h-[65vh] pr-4 pt-4 pb-8 scroll-smooth"
+            style={{
+              maskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)',
+              WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)'
+            }}
+          >
+            {journey.map((item, index) => (
+              <motion.div
+                key={item.year}
+                initial={{ opacity: 0, x: -50 }}
+                animate={currentSection === 3 ? { opacity: 1, x: 0 } : {}}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+              >
+                <Card className="bg-zinc-900/20 border-zinc-800/30 backdrop-blur-sm hover:bg-zinc-900/30 transition-all duration-300 group">
+                  <CardContent className="p-6">
+                    <div className="flex items-start gap-6">
+                      {/* Year Circle with Pulse Effect */}
+                      <div className="flex-shrink-0 relative">
+                        <div className="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
+                          <Calendar className="h-5 w-5 text-blue-400 absolute opacity-0 group-hover:opacity-100 transition-all duration-300" />
+                          <span className="text-blue-400 font-semibold group-hover:opacity-0 transition-all duration-300">{item.year}</span>
                         </div>
                       </div>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
 
-            {/* Scroll Progress Indicator */}
-            <motion.div
-              className="absolute right-4 top-1/2 -translate-y-1/2 w-1 h-32 bg-zinc-800/50 rounded-full overflow-hidden"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isScrolled ? 1 : 0 }}
-              transition={{ duration: 0.3 }}
-            >
-              <motion.div
-                className="w-full bg-blue-500 rounded-full"
-                style={{
-                  height: journeyRef.current 
-                    ? `${(journeyRef.current.scrollTop / (journeyRef.current.scrollHeight - journeyRef.current.clientHeight)) * 100}%` 
-                    : "0%"
-                }}
-              />
-            </motion.div>
-          </motion.div>
-        </section>
+                      <div className="space-y-4 flex-1">
+                        <div>
+                          <h3 className="text-xl font-semibold text-zinc-50 group-hover:text-blue-400 transition-colors duration-300">
+                            {item.title}
+                          </h3>
+                          <p className="text-zinc-400">{item.location}</p>
+                        </div>
+                        <p className="text-zinc-300 leading-relaxed">{item.description}</p>
+                        
+                        <div className="flex flex-wrap gap-2">
+                          {item.skills.map((skill) => (
+                            <Badge 
+                              key={skill}
+                              variant="secondary"
+                              className="bg-zinc-800/50 text-zinc-300 hover:bg-blue-500/20 hover:text-blue-300 transition-all duration-300"
+                            >
+                              {skill}
+                            </Badge>
+                          ))}
+                        </div>
 
-        {/* Projects Section */}
-        <section 
-          ref={el => sectionsRef.current[3] = el}
-          className="h-screen snap-start relative overflow-y-auto"
-        >
-          <motion.div 
-            className="container mx-auto px-4 py-16 min-h-screen"
-            initial={{ opacity: 0 }}
-            animate={currentSection === 3 ? { opacity: 1 } : {}}
-            transition={{ duration: 0.8 }}
-          >
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={currentSection === 3 ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5 }}
-              className="mb-8"
-            >
-              <div className="sticky top-0 pt-4 pb-6  backdrop-blur-sm z-10">
-                <h2 className="text-3xl font-bold text-zinc-50">My Work</h2>
-                <Briefcase className="mr-2 h-4 w-4 inline mb-2 text-zinc-400 mt-1" /> 
-                <h1 className='mr-2 h-4 w-4 inline mb-2 text-zinc-400'>Featured projects</h1>
-
-              </div>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-16">
-              {projects.map((project, index) => (
-                <motion.div
-                  key={project.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={currentSection === 3 ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: index * 0.2 }}
-                >
-                  <Card className="group h-full flex flex-col overflow-hidden bg-zinc-900/20 border-zinc-800/30 backdrop-blur-sm hover:bg-zinc-900/30 transition-all duration-300">
-                    <div className="relative aspect-video overflow-hidden">
-                      <img 
-                        src={project.banner} 
-                        alt={project.title} 
-                        className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                      />
+                        {/* Project Link with Animation */}
+                        {item.projectLink && (
+                          <motion.div
+                            whileHover={{ x: 5 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <Button 
+                              variant="ghost" 
+                              size="sm" 
+                              className="text-blue-400 hover:text-blue-300 hover:bg-blue-500/10 group/btn"
+                              onClick={() => {
+                                const element = document.querySelector(item.projectLink);
+                                element?.scrollIntoView({ behavior: 'smooth' });
+                              }}
+                            >
+                              View Related Project
+                              <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
+                            </Button>
+                          </motion.div>
+                        )}
+                      </div>
                     </div>
-                    <CardContent className="p-6 flex-1 flex flex-col">
-                      <h3 className="text-xl font-semibold text-zinc-50 mb-2 group-hover:text-blue-400 transition-colors duration-300">
-                        {project.title}
-                      </h3>
-                      <p className="text-zinc-400 flex-1">
-                        {project.description}
-                      </p>
-                    </CardContent>
-                    <CardFooter className="p-6 pt-0 flex gap-4">
-                      <Button 
-                        variant="ghost" 
-                        className="flex-1 bg-white/5 hover:bg-white/10 text-zinc-300 hover:text-white border border-white/10 group/btn"
-                        onClick={() => window.open(project.projectUrl, '_blank')}
-                      >
-                        View Project <ExternalLink className="ml-2 h-4 w-4 group-hover/btn:translate-x-0.5 transition-transform duration-300" />
-                      </Button>
-                    </CardFooter>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-          <div className="text-center mb-10 text-1xl text-zinc-400 font-bold">
-            Made with ❤️ by Victor.{' '}
-            <a 
-              href="https://github.com/VictorHumberto01/VictorPortfolio" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="text-blue-400 hover:underline"
-            >
-              Visit this website code on my GitHub page
-            </a>
+                  </CardContent>
+                </Card>
+              </motion.div>
+            ))}
           </div>
 
-          <ContactFooter />
-          </section>
+          {/* Scroll Progress Indicator */}
+          <motion.div
+            className="absolute right-4 top-1/2 -translate-y-1/2 w-1 h-32 bg-zinc-800/50 rounded-full overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: isScrolled ? 1 : 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div
+              className="w-full bg-blue-500 rounded-full"
+              style={{
+                height: journeyRef.current 
+                  ? `${(journeyRef.current.scrollTop / (journeyRef.current.scrollHeight - journeyRef.current.clientHeight)) * 100}%` 
+                  : "0%"
+              }}
+            />
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Projects Section */}
+      <section 
+        ref={el => sectionsRef.current[4] = el}
+        className="h-screen snap-start relative overflow-y-auto"
+      >
+        <motion.div 
+          className="container mx-auto px-4 py-16 min-h-screen"
+          initial={{ opacity: 0 }}
+          animate={currentSection === 4 ? { opacity: 1 } : {}}
+          transition={{ duration: 0.8 }}
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={currentSection === 4 ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5 }}
+            className="mb-8"
+          >
+            <div className="sticky top-0 pt-4 pb-6  backdrop-blur-sm z-10">
+              <h2 className="text-3xl font-bold text-zinc-50">My Work</h2>
+              <Briefcase className="mr-2 h-4 w-4 inline mb-2 text-zinc-400 mt-1" /> 
+              <h1 className='mr-2 h-4 w-4 inline mb-2 text-zinc-400'>Featured projects</h1>
+
+            </div>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-16">
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={currentSection === 4 ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+              >
+                <Card className="group h-full flex flex-col overflow-hidden bg-zinc-900/20 border-zinc-800/30 backdrop-blur-sm hover:bg-zinc-900/30 transition-all duration-300">
+                  <div className="relative aspect-video overflow-hidden">
+                    <img 
+                      src={project.banner} 
+                      alt={project.title} 
+                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                  </div>
+                  <CardContent className="p-6 flex-1 flex-col">
+                    <h3 className="text-xl font-semibold text-zinc-50 mb-2 group-hover:text-blue-400 transition-colors duration-300">
+                      {project.title}
+                    </h3>
+                    <p className="text-zinc-400 flex-1">
+                      {project.description}
+                    </p>
+                  </CardContent>
+                  <CardFooter className="p-6 pt-0 flex gap-4">
+                    <Button 
+                      variant="ghost" 
+                      className="flex-1 bg-white/5 hover:bg-white/10 text-zinc-300 hover:text-white border border-white/10 group/btn"
+                      onClick={() => window.open(project.projectUrl, '_blank')}
+                    >
+                      View Project <ExternalLink className="ml-2 h-4 w-4 group-hover/btn:translate-x-0.5 transition-transform duration-300" />
+                    </Button>
+                  </CardFooter>
+                </Card>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+        <div className="text-center mb-10 text-1xl text-zinc-400 font-bold">
+          Made with ❤️ by Victor.{' '}
+          <a 
+            href="https://github.com/VictorHumberto01/VictorPortfolio" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-blue-400 hover:underline"
+          >
+            Visit this website code on my GitHub page
+          </a>
+        </div>
+
+        <ContactFooter />
+        </section>
       </div>
     </motion.div>
   );
 };
+
 
 export default Portfolio;
