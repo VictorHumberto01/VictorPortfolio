@@ -427,7 +427,7 @@ const scrollToSection = (index) => {
               className="relative z-10"
             >
               <h2 className="text-3xl font-bold text-zinc-50 mb-2">About Me</h2>
-              <p className="text-zinc-400 mb-8">My journey in tech</p>
+              <p className="text-zinc-400 mb-8">Turning passion into innovation, one line of code at a time</p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">

@@ -217,7 +217,7 @@ const AnimatedHero = () => {
 
       {/* Scroll Down Hint */}
       <motion.div 
-        className="absolute bottom-8 left-0 right-0 flex flex-col items-center"
+        className="absolute bottom-8 transform -translate-x-[calc(50%+3px)] left-1/2 flex flex-col items-center"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 0.5 }}
@@ -226,8 +226,9 @@ const AnimatedHero = () => {
           className="text-zinc-400 text-sm mb-2"
           initial={{ opacity: 0.6 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, repeat: Infinity, repeatType: "reverse" }}
+          transition={{ duration: 1, repeat: 1, repeatType: "reverse" }}
         >
+          
         </motion.span>
         <motion.div
           onClick={scrollToContent}
@@ -239,8 +240,7 @@ const AnimatedHero = () => {
           }}
           transition={{ 
             duration: 1.5, 
-            repeat: Infinity,
-            repeatType: "loop" 
+            repeat: 1,
           }}
         >
           <ChevronDown className="h-5 w-5 text-blue-400" />
