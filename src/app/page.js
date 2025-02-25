@@ -63,7 +63,7 @@ const Portfolio = () => {
     { id: 'about', label: 'About', icon: User }, 
     { id: 'skills', label: 'Skills', icon: Code2 },
     { id: 'journey', label: 'Journey', icon: BookMarked },
-    { id: 'projects', label: 'Projects', icon: Terminal }
+    { id: 'projects', label: 'Projects', icon: Briefcase }
   ];
   
   const journey = [
