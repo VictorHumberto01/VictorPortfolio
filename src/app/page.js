@@ -70,7 +70,7 @@ const Portfolio = () => {
     {
         year: "2025",
         title: "Computer Science Student",
-        location: "Instituto Federal de Minas Gerais (IFMG) – Ibirité",
+        location: "Instituto Federal de Minas Gerais (IFMG) - Ibirité",
         description: "Currently pursuing my degree in Computer Science at IFMG campus Ibirité while still living in Belo Horizonte. Focused on deepening my understanding of fundamental and advanced computer science concepts.",
         skills: ["Data Structures", "Algorithms", "Software Engineering", "Computer Science", "Operating Systems", "Computer Architecture"]
     },
@@ -185,6 +185,12 @@ const Portfolio = () => {
   ];
 
   const projects = [
+    {
+      title: "My Personal Porfolio",
+      description: "My personal portfolio page. It was made using NextJS and TailwindCSS. It is a simple and elegant page that shows my skills and projects. It is a work in progress and will be updated as I progress in my career.",
+      banner: "/images/portfolio.png",
+      projectUrl: "https://github.com/VictorHumberto01/VictorPortfolio"
+    },
     {
       title: "Aline Nery Portfolio",
       description: "A personal Portfolio page and event ticket selling system developed for a executive coach under Quantium Labs with NextJS. Features a complete admin dashboard for managing events and tickets.",
@@ -849,83 +855,230 @@ const scrollToSection = (index) => {
         </motion.div>
       </section>
 
-      {/* Projects Section */}
-      <section 
-        ref={el => sectionsRef.current[4] = el}
-        className="h-screen snap-start relative overflow-y-auto"
+    {/* Projects Section */}
+    <section 
+      ref={el => sectionsRef.current[4] = el}
+      className="h-screen snap-start relative overflow-y-auto"
+    >
+      <motion.div 
+        className="container mx-auto px-4 py-16 min-h-screen"
+        initial={{ opacity: 0 }}
+        animate={currentSection === 4 ? { opacity: 1 } : {}}
+        transition={{ duration: 0.8 }}
       >
-        <motion.div 
-          className="container mx-auto px-4 py-16 min-h-screen"
-          initial={{ opacity: 0 }}
-          animate={currentSection === 4 ? { opacity: 1 } : {}}
-          transition={{ duration: 0.8 }}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={currentSection === 4 ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.5 }}
+          className="mb-8"
         >
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={currentSection === 4 ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5 }}
-            className="mb-8"
-          >
-            <div className="sticky top-0 pt-4 pb-6  backdrop-blur-sm z-10">
-              <h2 className="text-3xl font-bold text-zinc-50">My Work</h2>
-              <Briefcase className="mr-2 h-4 w-4 inline mb-2 text-zinc-400 mt-1" /> 
-              <h1 className='mr-2 h-4 w-4 inline mb-2 text-zinc-400'>Featured projects</h1>
-
-            </div>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-16">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={currentSection === 4 ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-              >
-                <Card className="group h-full flex flex-col overflow-hidden bg-zinc-900/20 border-zinc-800/30 backdrop-blur-sm hover:bg-zinc-900/30 transition-all duration-300">
-                  <div className="relative aspect-video overflow-hidden">
-                    <img 
-                      src={project.banner} 
-                      alt={project.title} 
-                      className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                  </div>
-                  <CardContent className="p-6 flex-1 flex-col">
-                    <h3 className="text-xl font-semibold text-zinc-50 mb-2 group-hover:text-blue-400 transition-colors duration-300">
-                      {project.title}
-                    </h3>
-                    <p className="text-zinc-400 flex-1">
-                      {project.description}
-                    </p>
-                  </CardContent>
-                  <CardFooter className="p-6 pt-0 flex gap-4">
-                    <Button 
-                      variant="ghost" 
-                      className="flex-1 bg-white/5 hover:bg-white/10 text-zinc-300 hover:text-white border border-white/10 group/btn"
-                      onClick={() => window.open(project.projectUrl, '_blank')}
-                    >
-                      View Project <ExternalLink className="ml-2 h-4 w-4 group-hover/btn:translate-x-0.5 transition-transform duration-300" />
-                    </Button>
-                  </CardFooter>
-                </Card>
-              </motion.div>
-            ))}
+          <div className="sticky top-0 pt-4 pb-6 backdrop-blur-sm z-10">
+            <h2 className="text-3xl font-bold text-zinc-50">My Work</h2>
+            <Briefcase className="mr-2 h-4 w-4 inline mb-2 text-zinc-400 mt-1" /> 
+            <h1 className='mr-2 h-4 w-4 inline mb-2 text-zinc-400'>Featured projects</h1>
           </div>
         </motion.div>
-        <div className="text-center mb-10 text-1xl text-zinc-400 font-bold">
-          Made with ❤️ by Victor.{' '}
-          <a 
-            href="https://github.com/VictorHumberto01/VictorPortfolio" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-blue-400 hover:underline"
-          >
-            Visit this website code on my GitHub page
-          </a>
-        </div>
 
-        <ContactFooter />
-        </section>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pb-16">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.title}
+              initial={{ opacity: 0, y: 20 }}
+              animate={currentSection === 4 ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: index * 0.2 }}
+            >
+              <Card className="group h-full flex flex-col overflow-hidden bg-zinc-900/20 border-zinc-800/30 backdrop-blur-sm hover:bg-zinc-900/30 transition-all duration-300">
+                <div className="relative aspect-video overflow-hidden">
+                  <img 
+                    src={project.banner} 
+                    alt={project.title} 
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                  />
+                </div>
+                <CardContent className="p-6 flex-1 flex-col">
+                  <h3 className="text-xl font-semibold text-zinc-50 mb-2 group-hover:text-blue-400 transition-colors duration-300">
+                    {project.title}
+                  </h3>
+                  <p className="text-zinc-400 mb-4">
+                    {project.description}
+                  </p>
+                  
+            <div className="mt-2">
+              <div className="flex flex-wrap gap-2">
+                {project.title === "My Personal Porfolio" && (
+                  <>
+                    <motion.div 
+                      className="flex items-center gap-2 p-2 bg-zinc-800/50 rounded-md hover:bg-zinc-700/50 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <img src="https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/next.svg" className="w-4 h-4" />
+                      <span className="text-xs text-zinc-300">Next.js</span>
+                    </motion.div>
+                    <motion.div 
+                      className="flex items-center gap-2 p-2 bg-zinc-800/50 rounded-md hover:bg-zinc-700/50 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <img src="https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/react.svg" className="w-4 h-4" />
+                      <span className="text-xs text-zinc-300">React</span>
+                    </motion.div>
+                    <motion.div 
+                      className="flex items-center gap-2 p-2 bg-zinc-800/50 rounded-md hover:bg-zinc-700/50 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <img src="https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/tailwind.svg" className="w-4 h-4" />
+                      <span className="text-xs text-zinc-300">Tailwind CSS</span>
+                    </motion.div>
+                  </>
+                )}
+                
+                {project.title === "Aline Nery Portfolio" && (
+                  <>
+                    <motion.div 
+                      className="flex items-center gap-2 p-2 bg-zinc-800/50 rounded-md hover:bg-zinc-700/50 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <img src="https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/javascript.svg" className="w-4 h-4" />
+                      <span className="text-xs text-zinc-300">JavaScript</span>
+                    </motion.div>
+                    <motion.div 
+                      className="flex items-center gap-2 p-2 bg-zinc-800/50 rounded-md hover:bg-zinc-700/50 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <img src="https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/react.svg" className="w-4 h-4" />
+                      <span className="text-xs text-zinc-300">React</span>
+                    </motion.div>
+                    <motion.div 
+                      className="flex items-center gap-2 p-2 bg-zinc-800/50 rounded-md hover:bg-zinc-700/50 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <img src="https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/f399628e99a19c1c6480ad95aace0e3a41b51dbe/main/sqlite.svg" className="w-4 h-4" />
+                      <span className="text-xs text-zinc-300">SQLite</span>
+                    </motion.div>
+                  </>
+                )}
+                
+                {project.title === "Céus" && (
+                  <>
+                    <motion.div 
+                      className="flex items-center gap-2 p-2 bg-zinc-800/50 rounded-md hover:bg-zinc-700/50 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <img src="https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/react.svg" className="w-4 h-4" />
+                      <span className="text-xs text-zinc-300">React</span>
+                    </motion.div>
+                    <motion.div 
+                      className="flex items-center gap-2 p-2 bg-zinc-800/50 rounded-md hover:bg-zinc-700/50 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <img src="https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/next.svg" className="w-4 h-4" />
+                      <span className="text-xs text-zinc-300">Next.js</span>
+                    </motion.div>
+                    <motion.div 
+                      className="flex items-center gap-2 p-2 bg-zinc-800/50 rounded-md hover:bg-zinc-700/50 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <img src="https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/tailwind.svg" className="w-4 h-4" />
+                      <span className="text-xs text-zinc-300">Tailwind CSS</span>
+                    </motion.div>
+                    <motion.div 
+                      className="flex items-center gap-2 p-2 bg-zinc-800/50 rounded-md hover:bg-zinc-700/50 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <img src="https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/6a09879637bc9c4096c092081c5b7036558c0de2/main/mysql.svg" className="w-4 h-4" />
+                      <span className="text-xs text-zinc-300">MySQL</span>
+                    </motion.div>
+                    <motion.div 
+                      className="flex items-center gap-2 p-2 bg-zinc-800/50 rounded-md hover:bg-zinc-700/50 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <img src="https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/typescript.svg" className="w-4 h-4" />
+                      <span className="text-xs text-zinc-300">TypeScript</span>
+                    </motion.div>
+                    <motion.div 
+                      className="flex items-center gap-2 p-2 bg-zinc-800/50 rounded-md hover:bg-zinc-700/50 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <img src="https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/6a09879637bc9c4096c092081c5b7036558c0de2/main/express.svg" className="w-4 h-4" />
+                      <span className="text-xs text-zinc-300">Express</span>
+                    </motion.div>
+                  </>
+                )}
+                
+                {project.title === "LlamaBridge" && (
+                  <>
+                    <motion.div 
+                      className="flex items-center gap-2 p-2 bg-zinc-800/50 rounded-md hover:bg-zinc-700/50 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <img src="https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/014b5e80bd75eff6fbca52f0bf2c10b43e3e1709/main/python.svg" className="w-4 h-4" />
+                      <span className="text-xs text-zinc-300">Python</span>
+                    </motion.div>
+                    <motion.div 
+                      className="flex items-center gap-2 p-2 bg-zinc-800/50 rounded-md hover:bg-zinc-700/50 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <img src="https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/014b5e80bd75eff6fbca52f0bf2c10b43e3e1709/main/flask.svg" className="w-4 h-4" />
+                      <span className="text-xs text-zinc-300">Flask</span>
+                    </motion.div>
+                    <motion.div 
+                      className="flex items-center gap-2 p-2 bg-zinc-800/50 rounded-md hover:bg-zinc-700/50 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <img src="https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/014b5e80bd75eff6fbca52f0bf2c10b43e3e1709/main/swift.svg" className="w-4 h-4" />
+                      <span className="text-xs text-zinc-300">Swift</span>
+                    </motion.div>
+                  </>
+                )}
+                
+                {project.title === "Music Discord Bot" && (
+                  <>
+                    <motion.div 
+                      className="flex items-center gap-2 p-2 bg-zinc-800/50 rounded-md hover:bg-zinc-700/50 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <img src="https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/014b5e80bd75eff6fbca52f0bf2c10b43e3e1709/main/python.svg" className="w-4 h-4" />
+                      <span className="text-xs text-zinc-300">Python</span>
+                    </motion.div>
+                    <motion.div 
+                      className="flex items-center gap-2 p-2 bg-zinc-800/50 rounded-md hover:bg-zinc-700/50 transition-all duration-300"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      <img src="https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/014b5e80bd75eff6fbca52f0bf2c10b43e3e1709/main/python.svg" className="w-4 h-4" />
+                      <span className="text-xs text-zinc-300">Pycord</span>
+                    </motion.div>
+                  </>
+                )}
+              </div>
+            </div>
+                </CardContent>
+                <CardFooter className="p-6 pt-0 flex gap-4">
+                  <Button 
+                    variant="ghost" 
+                    className="flex-1 bg-white/5 hover:bg-white/10 text-zinc-300 hover:text-white border border-white/10 group/btn"
+                    onClick={() => window.open(project.projectUrl, '_blank')}
+                  >
+                    View Project <ExternalLink className="ml-2 h-4 w-4 group-hover/btn:translate-x-0.5 transition-transform duration-300" />
+                  </Button>
+                </CardFooter>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+      <div className="text-center mb-10 text-1xl text-zinc-400 font-bold">
+        Made with ❤️ by Victor.{' '}
+        <a 
+          href="https://github.com/VictorHumberto01/VictorPortfolio" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-blue-400 hover:underline"
+        >
+          Visit this website code on my GitHub page
+        </a>
+      </div>
+
+      <ContactFooter />
+    </section>
       </div>
     </motion.div>
   );
