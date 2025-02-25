@@ -192,18 +192,16 @@ const Portfolio = () => {
       projectUrl: "https://github.com/VictorHumberto01/VictorPortfolio"
     },
     {
-      title: "Aline Nery Portfolio",
-      description: "A personal Portfolio page and event ticket selling system developed for a executive coach under Quantium Labs with NextJS. Features a complete admin dashboard for managing events and tickets.",
-      banner: "/images/aline.png",
-      projectUrl: "https://alinenery.com.br",
-
-    },
-    {
       title: "Céus",
       description: "A groundbreaking location based game developed for a client under Quantium Labs with ReactJS and TailwindCSS. Features a story system that storage messages and a map system that shows to the player where to go to see the stories.",
       banner: "/images/ceus.png",
       projectUrl: "https://ceusgame.com",
-
+    },
+    {
+      title: "Aline Nery Portfolio",
+      description: "A personal Portfolio page and event ticket selling system developed for a executive coach under Quantium Labs with NextJS. Features a complete admin dashboard for managing events and tickets.",
+      banner: "/images/aline.png",
+      projectUrl: "https://alinenery.com.br",
     },
     {
       title: "LlamaBridge",
