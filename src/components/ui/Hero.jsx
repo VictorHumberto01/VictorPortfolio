@@ -89,8 +89,8 @@ const AnimatedHero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Tag icon={GraduationCap} text="CS Major @ IFMG Ibirité" />
-          <Tag icon={Rocket} text="Co-founder @ Quantium Labs" />
+          <Tag icon={GraduationCap} text="Computer Science - IFMG " />
+          <Tag icon={Rocket} text="Co-founder - Quantium Labs" />
         </motion.div>
 
         {/* Main Heading */}
