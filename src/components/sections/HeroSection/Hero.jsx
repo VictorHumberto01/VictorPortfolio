@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Mail, ArrowRight, Send, GraduationCap, Rocket, ChevronDown } from 'lucide-react';
+import { Github, Mail, ArrowRight, Send, GraduationCap, Rocket, ChevronDown, History, Clock } from 'lucide-react';
+import { AnimatePresence } from 'framer-motion';
 
 const textVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -25,6 +26,7 @@ const Tag = ({ icon: Icon, text }) => (
     <span className="text-xs sm:text-sm font-medium text-white whitespace-nowrap">{text}</span>
   </motion.div>
 );
+
 
 const AnimatedHero = () => {
   const phrases = [
@@ -76,6 +78,7 @@ const AnimatedHero = () => {
 
   return (
     <div className="container mx-auto px-4 min-h-screen flex flex-col items-center justify-center text-center relative">
+      
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -215,7 +218,7 @@ const AnimatedHero = () => {
         </motion.div>
       </motion.div>
 
-      {/* Scroll Down Hint */}
+      {/* Fixed Scroll Down Hint - Safari Mobile Compatible */}
       <motion.div 
         className="absolute bottom-8 transform -translate-x-[calc(50%+3px)] left-1/2 flex flex-col items-center"
         initial={{ opacity: 0 }}
@@ -226,9 +229,8 @@ const AnimatedHero = () => {
           className="text-zinc-400 text-sm mb-2"
           initial={{ opacity: 0.6 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 1, repeat: 1, repeatType: "reverse" }}
+          transition={{ duration: 1, repeat: 0, repeatType: "reverse" }}
         >
-          
         </motion.span>
         <motion.div
           onClick={scrollToContent}
@@ -240,7 +242,8 @@ const AnimatedHero = () => {
           }}
           transition={{ 
             duration: 1.5, 
-            repeat: 1,
+            repeat: Infinity,
+            repeatType: "loop"
           }}
         >
           <ChevronDown className="h-5 w-5 text-blue-400" />

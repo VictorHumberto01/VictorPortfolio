@@ -10,7 +10,7 @@ import AboutSection from '@/components/sections/AboutSection/AboutSection';
 import SkillsSection from '@/components/sections/SkillsSection/SkillsSection';
 import JourneySection from '@/components/sections/JourneySection/JourneySection';
 import ProjectsSection from '@/components/sections/ProjectsSection/ProjectsSection';
-
+import Timeline from '@/components/ui/Timeline';
 
 const Portfolio = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -56,9 +56,6 @@ const Portfolio = () => {
     };
   }, []);
 
-
-
-  
   const sections = [
     { id: 'home', label: 'Home', icon: HomeIcon },
     { id: 'about', label: 'About', icon: User }, 
@@ -233,7 +230,8 @@ const scrollToSection = (index) => {
       transition={{ duration: 0.8 }}
       className="relative bg-zinc-950 text-zinc-50 overflow-x-hidden"
     >
-      
+    <Timeline />
+
 
       
       {/* Background Effects */}
@@ -291,7 +289,7 @@ const scrollToSection = (index) => {
     
           {/* Mobile Navigation */}
           {isMobile && (
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-900/30 backdrop-blur-xl p-4 flex justify-between items-center">
+        <nav className="fixed top-0 left-0 right-0 z-10 bg-zinc-900/30 backdrop-blur-xl p-4 flex justify-between items-center">
           <Button 
             variant="ghost" 
             size="icon" 
