@@ -7,6 +7,7 @@ import { motion } from 'framer-motion';
 const SkillsSection = ({ skills, currentSection, sectionsRef }) => {
   return (
     <section 
+      id='skills'
       ref={el => sectionsRef.current[2] = el} 
       className="h-screen snap-start flex items-center relative"
     >

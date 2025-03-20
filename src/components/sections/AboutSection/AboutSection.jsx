@@ -9,6 +9,7 @@ import EnglishProficiency from './EnglishProficiency';
 const AboutSection = ({ currentSection, sectionsRef }) => {
   return (
     <section 
+      id='about'
       ref={el => sectionsRef.current[1] = el}
       className="min-h-screen snap-start flex items-center relative py-20 md:py-24"
     >

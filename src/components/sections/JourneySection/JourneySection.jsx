@@ -1,4 +1,3 @@
-// components/sections/JourneySection/JourneySection.jsx
 'use client';
 
 import React from 'react';
@@ -18,6 +17,7 @@ const JourneySection = ({
 }) => {
   return (
     <section 
+      id='journey'
       ref={el => sectionsRef.current[3] = el} 
       className="h-screen snap-start flex items-center relative"
     >
@@ -91,7 +91,7 @@ const JourneyCards = ({ journey, currentSection, journeyRef }) => {
     >
       {journey.map((item, index) => (
         <JourneyCard 
-          key={item.year}
+          key={`${item.year}-${item.title.replace(/\s+/g, '-').toLowerCase()}`}
           item={item}
           index={index}
           currentSection={currentSection}
@@ -111,7 +111,7 @@ const JourneyCard = ({ item, index, currentSection }) => {
       <Card className="bg-zinc-900/20 border-zinc-800/30 backdrop-blur-sm hover:bg-zinc-900/30 transition-all duration-300 group">
         <CardContent className="p-6">
           <div className="flex items-start gap-6">
-            <YearBadge year={item.year} />
+            <YearBadge year={item.year} specificDate={item.specificDate} />
             <JourneyDetails item={item} />
           </div>
         </CardContent>
@@ -120,12 +120,15 @@ const JourneyCard = ({ item, index, currentSection }) => {
   );
 };
 
-const YearBadge = ({ year }) => {
+const YearBadge = ({ year, specificDate }) => {
   return (
     <div className="flex-shrink-0 relative">
       <div className="w-16 h-16 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-500/20">
         <Calendar className="h-5 w-5 text-blue-400 absolute opacity-0 group-hover:opacity-100 transition-all duration-300" />
-        <span className="text-blue-400 font-semibold group-hover:opacity-0 transition-all duration-300">{year}</span>
+        <div className="flex flex-col items-center justify-center group-hover:opacity-0 transition-all duration-300">
+          <span className="text-blue-400 font-semibold">{year}</span>
+          {specificDate && <span className="text-xs text-blue-300/70">{specificDate}</span>}
+        </div>
       </div>
     </div>
   );

@@ -456,24 +456,6 @@ const scrollToSection = (index) => {
       <AnimatePresence>
         {isLoading && <LoadingScreen />}
       </AnimatePresence>
-
-      <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.8 }}
-            className="fixed z-50 top-4 right-1 md:top-6 md:right-auto md:left-10"
-        >
-            <Link href="/">
-            <motion.button
-                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/20 to-blue-600/20 rounded-full border border-blue-500/30 hover:border-blue-400/40 transition-colors backdrop-blur-sm"
-                whileHover={{ scale: 1.05, x: -5 }}
-                whileTap={{ scale: 0.95 }}
-            >
-                <ArrowLeft className="h-4 w-4 text-blue-400" />
-                <span className="text-sm font-medium text-white">Back to Current Version</span>
-            </motion.button>
-            </Link>
-        </motion.div>
       
       {/* Background Effects */}
       <div className="fixed inset-0 pointer-events-none">
@@ -538,10 +520,10 @@ const scrollToSection = (index) => {
         >
         </motion.div>
       </div>
-    
-          {/* Mobile Navigation */}
-          {isMobile && (
-        <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-900/30 backdrop-blur-xl p-4 flex justify-between items-center">
+      
+         {/* Mobile Navigation */}
+         {isMobile && (
+        <nav className="fixed top-0 left-0 right-0 z-50 bg-zinc-900/30 backdrop-blur-sm p-4 flex justify-between items-center">
           <Button 
             variant="ghost" 
             size="icon" 
@@ -652,6 +634,24 @@ const scrollToSection = (index) => {
         </motion.div>
       </nav>
       )}
+      
+      <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.8 }}
+            className="fixed z-50 top-4 right-1 md:top-6 md:right-auto md:left-10"
+        >
+            <Link href="/">
+            <motion.button
+                className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500/20 to-blue-600/20 rounded-full border border-blue-500/30 hover:border-blue-400/40 transition-colors backdrop-blur-sm"
+                whileHover={{ scale: 1.05, x: -5 }}
+                whileTap={{ scale: 0.95 }}
+            >
+                <ArrowLeft className="h-4 w-4 text-blue-400" />
+                <span className="text-sm font-medium text-white">Back to Current Version</span>
+            </motion.button>
+            </Link>
+        </motion.div>
       
       <div className={`${isMobile ? 'overflow-y-auto' : 'h-screen snap-y snap-mandatory overflow-y-scroll'}`}>
         {/* Hero Section */}

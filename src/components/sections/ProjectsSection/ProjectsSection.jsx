@@ -3,11 +3,13 @@ import { motion } from 'framer-motion';
 import { Briefcase } from 'lucide-react';
 import ProjectCard from './ProjectCard';
 import ContactFooter from '@/components/ui/ContactFooter';
+import Footer from '@/components/ui/Footer';
 
 const ProjectsSection = ({ currentSection, sectionsRef, projects }) => {
   return (
     <section 
       ref={el => sectionsRef.current[4] = el}
+      id='projects'
       className="h-screen snap-start relative overflow-y-auto"
     >
       <motion.div 
@@ -43,19 +45,10 @@ const ProjectsSection = ({ currentSection, sectionsRef, projects }) => {
         </div>
       </motion.div>
       
-      <div className="text-center mb-10 text-1xl text-zinc-400 font-bold">
-        Made with ❤️ by Victor.{' '}
-        <a 
-          href="https://github.com/VictorHumberto01/VictorPortfolio" 
-          target="_blank" 
-          rel="noopener noreferrer"
-          className="text-blue-400 hover:underline"
-        >
-          Visit this website code on my GitHub page
-        </a>
-      </div>
+
 
       <ContactFooter />
+      <Footer/>
     </section>
   );
 };

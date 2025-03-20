@@ -11,6 +11,7 @@ import SkillsSection from '@/components/sections/SkillsSection/SkillsSection';
 import JourneySection from '@/components/sections/JourneySection/JourneySection';
 import ProjectsSection from '@/components/sections/ProjectsSection/ProjectsSection';
 import Timeline from '@/components/ui/Timeline';
+import Footer from '@/components/ui/Footer';
 
 const Portfolio = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -67,10 +68,27 @@ const Portfolio = () => {
   const journey = [
     {
         year: "2025",
+        specificDate: "Apr",
         title: "Computer Science Student",
-        location: "Instituto Federal de Minas Gerais (IFMG) - Ibirité",
-        description: "Currently pursuing my degree in Computer Science at IFMG campus Ibirité while still living in Belo Horizonte. Focused on deepening my understanding of fundamental and advanced computer science concepts.",
+        location: "Instituto Federal de Minas Gerais (IFMG)",
+        description: "Starting my degree in Computer Science at IFMG while living in Belo Horizonte. Focused on deepening my understanding of fundamental and advanced computer science concepts.",
         skills: ["Data Structures", "Algorithms", "Software Engineering", "Computer Science", "Operating Systems", "Computer Architecture"]
+    },
+    {
+      year: "2025",
+      specificDate: "Mar",
+      title: "Backend concepts and good practices",
+      location: "Self-taught",
+      description: "Learning Java and Spring Boot for enterprise applications. Focused on clean architecture, design patterns, and best practices for building scalable backend systems.",
+      skills: ["Java", "Spring Boot", "Clean Architecture", "Design Patterns", "Enterprise Development"]
+    },
+    {
+        year: "2025",
+        specificDate: "Jan",
+        title: "General Concepts",
+        location: "Self-taught",
+        description: "Prepared for Computer Science degree by studying core programming concepts and languages. Focused on algorithms, data structures, and system-level programming.",
+        skills: ["C", "C++", "Algorithms", "Data Structures"]
     },
     {
         year: "2024",
@@ -407,6 +425,7 @@ const scrollToSection = (index) => {
         {/* Hero Section */}
         <section 
           ref={el => sectionsRef.current[0] = el}
+          id='home'
           className="h-screen snap-start flex items-center relative"
         >
          <AnimatedHero/>
@@ -415,6 +434,7 @@ const scrollToSection = (index) => {
         <AboutSection 
             currentSection={currentSection} 
             sectionsRef={sectionsRef} 
+            id='about'
           />
 
         {/* Skills Section */}
@@ -422,6 +442,7 @@ const scrollToSection = (index) => {
           skills={skills}
           currentSection={currentSection}
           sectionsRef={sectionsRef}
+          id='skills'
         />
 
         {/* Journey Section */}
@@ -432,6 +453,7 @@ const scrollToSection = (index) => {
             journeyRef={journeyRef}
             isScrolled={isScrolled}
             isMobile={isMobile}
+            id='journey'
           />
 
     {/* Projects Section */}
@@ -439,8 +461,14 @@ const scrollToSection = (index) => {
         currentSection={currentSection} 
         sectionsRef={sectionsRef} 
         projects={projects} 
+        id='projects'
       />
+
+      
       </div>
+
+
+      
     </motion.div>
   );
 };
