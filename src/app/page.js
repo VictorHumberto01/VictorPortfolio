@@ -78,10 +78,10 @@ const Portfolio = () => {
     {
       year: "2025",
       specificDate: "Mar",
-      title: "Backend concepts and good practices",
+      title: "Backend concepts, OOP and good practices",
       location: "Self-taught",
-      description: "Learning Java and Spring Boot for enterprise applications. Focused on clean architecture, design patterns, and best practices for building scalable backend systems.",
-      skills: ["Java", "Spring Boot", "Clean Architecture", "Design Patterns", "Enterprise Development"]
+      description: "Learning Java focusing on clean architecture, design patterns, and best practices for building scalable backend systems.",
+      skills: ["Java", "Object-oriented programming", "Clean Architecture", "Design Patterns", "Enterprise Development"]
     },
     {
         year: "2025",
@@ -96,14 +96,15 @@ const Portfolio = () => {
         title: "Software Developer at Quantium Labs",
         location: "Quantium Labs",
         description: "Continuing my journey at Quantium Labs, working on various software projects while improving my technical and problem-solving skills.",
-        skills: ["ReactJS", "TailwindCSS", "Project Management", "Team Leadership", "System Design"]
+        skills: ["ReactJS", "TailwindCSS", "Project Management", "Team Leadership", "System Design"
+        ]
     },
     {
         year: "2023",
         title: "Web Development Journey",
         location: "Self-taught",
         description: "Transitioned to web development, diving deep into modern technologies and frameworks. Focused on building practical applications and expanding my technical toolkit.",
-        skills: ["JavaScript", "ReactJS", "TailwindCSS", "Modern Web Dev"]
+        skills: ["JavaScript", "ReactJS", "TailwindCSS", "Modern Web Dev", "Typescript", "ExpressJS", "Database"]
     },
     {
         year: "2022",
