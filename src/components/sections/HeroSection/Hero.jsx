@@ -133,7 +133,7 @@ const AnimatedHero = () => {
           <span className="text-white">Victor Humberto</span>
           <div className="w-8 sm:w-16 md:w-20 h-8 sm:h-8 md:h-10 bg-blue-500/10 hover:bg-blue-500/20 rounded-full border border-blue-500/20 transition-all duration-300 overflow-hidden">
             <img 
-              src="/profile.jpg" 
+              src="https://raw.githubusercontent.com/VictorHumberto01/VictorPortfolio/refs/heads/main/public/profile.jpg" 
               alt="Profile" 
               className="w-full h-full object-cover"
             />
