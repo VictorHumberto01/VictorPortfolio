@@ -226,32 +226,32 @@ const Portfolio = () => {
     {
       title: "My Personal Porfolio",
       description: "My personal portfolio page. It was made using NextJS and TailwindCSS. It is a simple and elegant page that shows my skills and projects. It is a work in progress and will be updated as I progress in my career.",
-      banner: "https://raw.githubusercontent.com/VictorHumberto01/VictorPortfolio/refs/heads/main/public/images/portfolio.png",
+      banner: "/images/portfolio.png",
       projectUrl: "https://github.com/VictorHumberto01/VictorPortfolio"
     },
     {
       title: "Céus",
       description: "A groundbreaking location based game developed for a client under Quantium Labs with ReactJS and TailwindCSS. Features a story system that storage messages and a map system that shows to the player where to go to see the stories.",
-      banner: "https://raw.githubusercontent.com/VictorHumberto01/VictorPortfolio/refs/heads/main/public/images/ceus.png",
+      banner: "/images/ceus.png",
       projectUrl: "https://ceusgame.com",
     },
     {
       title: "Aline Nery Portfolio",
       description: "A personal Portfolio page and event ticket selling system developed for a executive coach under Quantium Labs with NextJS. Features a complete admin dashboard for managing events and tickets.",
-      banner: "https://raw.githubusercontent.com/VictorHumberto01/VictorPortfolio/refs/heads/main/public/images/aline.png",
+      banner: "/images/aline.png",
       projectUrl: "https://alinenery.com.br",
     },
     {
       title: "LlamaBridge",
       description: "A server and client interface to host your own instance of the Llama model. Uses Ollama to generate the model and a server to host the model. The client is built using Swift for MacOS and commmunicate to local server run in the same network.",
       banner: "/images/llama.png",
-      projectUrl: "https://raw.githubusercontent.com/VictorHumberto01/VictorPortfolio/refs/heads/main/public/images/llama.png",
+      projectUrl: "https://github.com/VictorHumberto01/LlamaBridge",
     },
     {
       title: "Music Discord Bot",
       description: "My first project. I started as most youtube discord bots were seizing from existing. Can play music from YouTube videos. Developed using Python and Pycord. Features a queue system, loop, playlist support and slash commands. It was made as a experiment and was never used in production.",
       banner: "/images/music.png",
-      projectUrl: "https://raw.githubusercontent.com/VictorHumberto01/VictorPortfolio/refs/heads/main/public/images/music.png",
+      projectUrl: "https://github.com/VictorHumberto01/Tubetinho",
     }
   ];
 
@@ -287,7 +287,7 @@ const scrollToSection = (index) => {
           transition={{ duration: 1, delay: 0.5 }}
           className="absolute inset-0 bg-cover bg-fixed"
           style={{ 
-            backgroundImage: "url('https://raw.githubusercontent.com/VictorHumberto01/VictorPortfolio/main/public/background.jpg')",
+            backgroundImage: "url('/background.jpg')",
             opacity: 0.3,
           }}
         />
