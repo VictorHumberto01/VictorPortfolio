@@ -19,24 +19,37 @@ const JourneySection = ({
     <section 
       id='journey'
       ref={el => sectionsRef.current[3] = el} 
-      className="h-screen snap-start flex items-center relative"
+      className="min-h-screen snap-start relative py-20 md:py-24"
     >
       <motion.div 
-        className="container mx-auto px-4 py-24"
+        className="container mx-auto px-4"
         initial={{ opacity: 0 }}
         animate={currentSection === 3 ? { opacity: 1 } : {}}
         transition={{ duration: 0.8 }}
       >
         <SectionHeader currentSection={currentSection} />
-        <ScrollHint isMobile={isMobile} isScrolled={isScrolled} />
         <JourneyCards 
           journey={journey} 
           currentSection={currentSection} 
-          journeyRef={journeyRef} 
         />
-        <ScrollProgressIndicator isScrolled={isScrolled} journeyRef={journeyRef} />
       </motion.div>
     </section>
+  );
+};
+
+// Update JourneyCards to remove scrollable container
+const JourneyCards = ({ journey, currentSection }) => {
+  return (
+    <div className="space-y-8 py-4">
+      {journey.map((item, index) => (
+        <JourneyCard 
+          key={`${item.year}-${item.title.replace(/\s+/g, '-').toLowerCase()}`}
+          item={item}
+          index={index}
+          currentSection={currentSection}
+        />
+      ))}
+    </div>
   );
 };
 
@@ -51,53 +64,6 @@ const SectionHeader = ({ currentSection }) => {
       <h2 className="text-3xl font-bold text-zinc-50 mb-2">My Path in Tech</h2>
       <p className="text-zinc-400 mb-8">From first code to founding companies</p>
     </motion.div>
-  );
-};
-
-const ScrollHint = ({ isMobile, isScrolled }) => {
-  if (isMobile) return null;
-  
-  return (
-    <AnimatePresence>
-      {!isScrolled && (
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0 }}
-          className="absolute left-1/2 -translate-x-1/2 top-32 z-20 flex flex-col items-center gap-2"
-        >
-          <span className="text-zinc-400 text-sm">Scroll to explore</span>
-          <motion.div
-            animate={{ y: [0, 5, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          >
-            <ChevronDown className="h-5 w-5 text-blue-400" />
-          </motion.div>
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-};
-
-const JourneyCards = ({ journey, currentSection, journeyRef }) => {
-  return (
-    <div 
-      ref={journeyRef}
-      className="space-y-8 overflow-y-auto max-h-[65vh] pr-4 pt-4 pb-8 scroll-smooth"
-      style={{
-        maskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)',
-        WebkitMaskImage: 'linear-gradient(to bottom, transparent, black 10%, black 90%, transparent)'
-      }}
-    >
-      {journey.map((item, index) => (
-        <JourneyCard 
-          key={`${item.year}-${item.title.replace(/\s+/g, '-').toLowerCase()}`}
-          item={item}
-          index={index}
-          currentSection={currentSection}
-        />
-      ))}
-    </div>
   );
 };
 
@@ -188,26 +154,6 @@ const ProjectLink = ({ projectLink }) => {
         View Related Project
         <ArrowRight className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform duration-300" />
       </Button>
-    </motion.div>
-  );
-};
-
-const ScrollProgressIndicator = ({ isScrolled, journeyRef }) => {
-  return (
-    <motion.div
-      className="absolute right-4 top-1/2 -translate-y-1/2 w-1 h-32 bg-zinc-800/50 rounded-full overflow-hidden"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: isScrolled ? 1 : 0 }}
-      transition={{ duration: 0.3 }}
-    >
-      <motion.div
-        className="w-full bg-blue-500 rounded-full"
-        style={{
-          height: journeyRef.current 
-            ? `${(journeyRef.current.scrollTop / (journeyRef.current.scrollHeight - journeyRef.current.clientHeight)) * 100}%` 
-            : "0%"
-        }}
-      />
     </motion.div>
   );
 };

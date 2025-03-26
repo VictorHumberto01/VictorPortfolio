@@ -5,15 +5,15 @@ import ProjectCard from './ProjectCard';
 import ContactFooter from '@/components/ui/ContactFooter';
 import Footer from '@/components/ui/Footer';
 
-const ProjectsSection = ({ currentSection, sectionsRef, projects }) => {
+const ProjectsSection = ({ currentSection, sectionsRef, projects, isMobile }) => {
   return (
     <section 
       ref={el => sectionsRef.current[4] = el}
       id='projects'
-      className="h-screen snap-start relative overflow-y-auto"
+      className={`h-screen snap-start relative ${!isMobile ? 'overflow-y-auto' : ''}`}
     >
       <motion.div 
-        className="container mx-auto px-4 py-16 min-h-screen"
+        className={`container mx-auto px-4 py-16 ${isMobile ? '' : 'min-h-screen'}`}
         initial={{ opacity: 0 }}
         animate={currentSection === 4 ? { opacity: 1 } : {}}
         transition={{ duration: 0.8 }}
@@ -45,8 +45,6 @@ const ProjectsSection = ({ currentSection, sectionsRef, projects }) => {
         </div>
       </motion.div>
       
-
-
       <ContactFooter />
       <Footer/>
     </section>

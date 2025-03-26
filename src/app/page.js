@@ -12,6 +12,7 @@ import JourneySection from '@/components/sections/JourneySection/JourneySection'
 import ProjectsSection from '@/components/sections/ProjectsSection/ProjectsSection';
 import Timeline from '@/components/ui/Timeline';
 import Footer from '@/components/ui/Footer';
+import CustomCursor from '@/components/ui/CustomCursor';
 
 const Portfolio = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -234,11 +235,18 @@ const Portfolio = () => {
   ];
 
 const scrollToSection = (index) => {
-    if (isMobile) {
-      setIsMobileMenuOpen(false);
-    }
-    sectionsRef.current[index]?.scrollIntoView({ behavior: 'smooth' });
-  };
+  if (isMobile) {
+    setIsMobileMenuOpen(false);
+  }
+  const section = sectionsRef.current[index];
+  if (section) {
+    section.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'start'
+    });
+  }
+};
 
 
   return (
@@ -246,11 +254,10 @@ const scrollToSection = (index) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.8 }}
-      className="relative bg-zinc-950 text-zinc-50 overflow-x-hidden"
+      className="relative bg-zinc-950 text-zinc-50 overflow-hidden [&]:cursor-none [&_*]:cursor-none [&_button]:cursor-none [&_a]:cursor-none"
     >
-    <Timeline />
-
-
+      {!isMobile && <CustomCursor />}
+      <Timeline />
       
       {/* Background Effects */}
       <div className="fixed inset-0 pointer-events-none">
@@ -262,32 +269,9 @@ const scrollToSection = (index) => {
           style={{ 
             backgroundImage: "url('/background.jpg')",
             opacity: 0.3,
-            transform: `translate(${(mousePosition.x - 50) * 0.1}px, ${(mousePosition.y - 50) * 0.1}px)`
           }}
         />
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.7 }}
-          className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-zinc-800/20 via-zinc-900/40 to-zinc-950"
-          style={{
-            backgroundPosition: `${100 - mousePosition.x}% ${100 - mousePosition.y}%`,
-            backgroundSize: '150% 100%',
-          }}
-        />
-        <motion.div 
-          initial={{ opacity: 0, scale: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1, delay: 0.9 }}
-          className="absolute w-[800px] h-[800px] rounded-full blur-[120px]"
-          style={{
-            background: 'radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%)',
-            left: `${mousePosition.x}%`,
-            top: `${mousePosition.y}%`,
-            transform: 'translate(-50%, -50%)',
-            opacity: 1,
-          }}
-        />
+
         <motion.div 
           className="relative h-full"
           variants={{
@@ -307,7 +291,7 @@ const scrollToSection = (index) => {
     
           {/* Mobile Navigation */}
           {isMobile && (
-        <nav className="fixed top-0 left-0 right-0 z-10 bg-zinc-900/30 backdrop-blur-xl p-4 flex justify-between items-center">
+        <nav className="fixed top-0 left-0 right-0 z-[60] bg-zinc-900/30 backdrop-blur-xl p-4 flex justify-between items-center">
           <Button 
             variant="ghost" 
             size="icon" 
@@ -420,7 +404,15 @@ const scrollToSection = (index) => {
       )}
       
       
-      <div className={`${isMobile ? 'overflow-y-auto' : 'h-screen snap-y snap-mandatory overflow-y-scroll'}`}>
+      <div 
+        className={`
+          ${isMobile ? 'overflow-y-auto' : 'h-screen snap-y snap-mandatory overflow-y-scroll'}
+          overflow-x-hidden scroll-smooth
+        `}
+        style={{
+          scrollBehavior: 'smooth'
+        }}
+      >
         
         {/* Hero Section */}
         <section 
@@ -461,6 +453,7 @@ const scrollToSection = (index) => {
         currentSection={currentSection} 
         sectionsRef={sectionsRef} 
         projects={projects} 
+        isMobile={isMobile}
         id='projects'
       />
 

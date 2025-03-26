@@ -307,7 +307,7 @@ const Timeline = () => {
       </AnimatePresence>
 
       {/* Regular timeline UI - Now with responsive positioning */}
-      <div className={`absolute z-20 ${isMobile ? ' z-40 top-4 right-16' : 'top-6 right-10'}`}>
+      <div className={`fixed ${isMobile ? 'top-4 right-4 z-[70]' : 'top-6 right-10 z-20'}`}>
         <motion.div
           className="relative"
           initial={{ opacity: 0 }}
