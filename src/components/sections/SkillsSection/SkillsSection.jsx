@@ -1,4 +1,3 @@
-// components/sections/SkillsSection/SkillsSection.jsx
 'use client';
 
 import React from 'react';

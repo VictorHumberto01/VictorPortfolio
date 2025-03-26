@@ -123,12 +123,35 @@ const Portfolio = () => {
 
   useEffect(() => {
     const handleMouseMove = (e) => {
-      const x = (e.clientX / window.innerWidth) * 100;
-      const y = (e.clientY / window.innerHeight) * 100;
-      setMousePosition({ x, y });
+      // Use requestAnimationFrame for smoother cursor updates
+      requestAnimationFrame(() => {
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+        setMousePosition({ x, y });
+      });
     };
 
-    // Improved scroll detection using Intersection Observer
+    // Add passive flag to improve scroll performance
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+    
+    // Add a scroll event listener to update cursor position during scroll
+    const handleScroll = () => {
+      requestAnimationFrame(() => {
+        const e = { clientX: mousePosition.x * window.innerWidth / 100, clientY: mousePosition.y * window.innerHeight / 100 };
+        handleMouseMove(e);
+      });
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [mousePosition]);
+
+  // Improved scroll detection using Intersection Observer
+  useEffect(() => {
     const observerOptions = {
       root: null,
       rootMargin: '-50% 0px',
@@ -154,10 +177,7 @@ const Portfolio = () => {
       }
     });
 
-    window.addEventListener('mousemove', handleMouseMove);
-
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
       sectionsRef.current.forEach(section => {
         if (section) {
           observer.unobserve(section);
@@ -241,7 +261,6 @@ const scrollToSection = (index) => {
   const section = sectionsRef.current[index];
   if (section) {
     section.scrollIntoView({
-      behavior: 'smooth',
       block: 'start',
       inline: 'start'
     });
@@ -407,10 +426,12 @@ const scrollToSection = (index) => {
       <div 
         className={`
           ${isMobile ? 'overflow-y-auto' : 'h-screen snap-y snap-mandatory overflow-y-scroll'}
-          overflow-x-hidden scroll-smooth
+          overflow-x-hidden
         `}
         style={{
-          scrollBehavior: 'smooth'
+          willChange: 'transform',
+          transform: 'translateZ(0)',
+          backfaceVisibility: 'hidden'
         }}
       >
         
@@ -456,12 +477,7 @@ const scrollToSection = (index) => {
         isMobile={isMobile}
         id='projects'
       />
-
-      
       </div>
-
-
-      
     </motion.div>
   );
 };
