@@ -1,8 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { HomeIcon, Calendar, Briefcase } from 'lucide-react';
+import { HomeIcon, Calendar, Briefcase, BookMarked, Clock, GraduationCap } from 'lucide-react';
 
 const LocationInfo = ({ currentSection }) => {
   return (
@@ -11,56 +10,59 @@ const LocationInfo = ({ currentSection }) => {
       animate={currentSection === 1 ? { opacity: 1, x: 0 } : {}}
       transition={{ duration: 0.5 }}
     >
-      <Card className="bg-zinc-900/20 border-zinc-800/30 backdrop-blur-sm h-full">
-        <CardContent className="p-6">
-          <div className="flex flex-col h-full">
-            <h3 className="text-xl font-semibold text-zinc-50 mb-4">Location & Availability</h3>
-            
-            <div className="space-y-6">
+      <div className="grid grid-cols-2 gap-4">
+        <Card className="bg-zinc-900/20 border-zinc-800/30 backdrop-blur-sm">
+          <CardContent className="p-6">
+            <div className="space-y-4">
               <InfoItem 
                 icon={<HomeIcon className="h-5 w-5 text-blue-400" />} 
-                title="Based in"
-                description="Belo Horizonte, Minas Gerais, Brazil"
+                title="Location"
+                description="Belo Horizonte, Brazil"
               />
-
-              <InfoItem 
-                icon={<Calendar className="h-5 w-5 text-blue-400" />} 
-                title="Time Zone"
-                description="UTC-3 (Brazil Time)"
-                subdescription="Flexible with international schedules"
-              />
-
-              <InfoItem 
-                icon={<Briefcase className="h-5 w-5 text-blue-400" />} 
-                title="Current Focus"
-                description="Computer Science Student at IFMG"
-                subdescription="Open to work opportunities"
-                badge="Web Developer at Quantium Labs"
+                            <InfoItem 
+                icon={<GraduationCap className="h-5 w-5 text-blue-400" />} 
+                title="Education"
+                description="Computer Science"
+                subdescription="IFMG"
               />
             </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+
+        <Card className="bg-zinc-900/20 border-zinc-800/30 backdrop-blur-sm">
+          <CardContent className="p-6">
+            <div className="space-y-4">
+              <InfoItem 
+                icon={<BookMarked className="h-5 w-5 text-blue-400" />} 
+                title="Languages"
+                description="English (C1 Advanced)"
+              />
+                            <InfoItem 
+                icon={<Clock className="h-5 w-5 text-blue-400" />} 
+                title="Time Zone"
+                description="UTC-3 (Brazil Time)"
+                subdescription="Flexible schedule"
+              />
+
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </motion.div>
   );
 };
 
-const InfoItem = ({ icon, title, description, subdescription, badge }) => {
+const InfoItem = ({ icon, title, description, subdescription }) => {
   return (
-    <div className="flex items-start gap-4">
-      <div className="w-10 h-10 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0">
+    <div className="flex items-start gap-3">
+      <div className="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center flex-shrink-0">
         {icon}
       </div>
       <div>
-        <h4 className="text-zinc-200 font-medium">{title}</h4>
-        <p className="text-zinc-400">{description}</p>
-        {subdescription && <p className="text-zinc-500 text-sm">{subdescription}</p>}
-        {badge && (
-          <div className="flex items-center gap-2 mt-1">
-            <Badge className="bg-blue-500/20 text-blue-300">
-              {badge}
-            </Badge>
-          </div>
+        <h4 className="text-zinc-200 font-medium text-sm">{title}</h4>
+        <p className="text-zinc-400 text-sm">{description}</p>
+        {subdescription && (
+          <p className="text-zinc-500 text-xs mt-0.5">{subdescription}</p>
         )}
       </div>
     </div>

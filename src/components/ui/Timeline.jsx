@@ -337,7 +337,7 @@ const Timeline = () => {
               >
                 <div className="p-3">
                   <div className="text-xs text-zinc-400 mb-2 flex items-center">
-                    <Clock className="h-3 w-3 mr-1" /> Website version history
+                    <Clock className="h-3 w-3 mr-1" />Click to time travel
                   </div>
                   <div className="space-y-2">
                     {versions.map((item, index) => (

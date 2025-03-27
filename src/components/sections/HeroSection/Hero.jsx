@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Mail, ArrowRight, Send, GraduationCap, Rocket, ChevronDown, History, Clock } from 'lucide-react';
+import { Github, Mail, ArrowRight, Send, GraduationCap, MapPin, ChevronDown, PinIcon } from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
 
 const textVariants = {
@@ -93,7 +93,7 @@ const AnimatedHero = () => {
           transition={{ duration: 0.5 }}
         >
           <Tag icon={GraduationCap} text="Computer Science - IFMG " />
-          <Tag icon={Rocket} text="Co-founder - Quantium Labs" />
+          <Tag icon={MapPin} text="Belo Horizonte - MG" />
         </motion.div>
 
         {/* Main Heading */}
