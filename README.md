@@ -4,7 +4,9 @@
 This repository contains the source code for my personal portfolio website, where I highlight my projects, showcase my skills, and share a bit about my journey as a full-stack developer. I built this site to reflect the technologies I’m passionate about and the learning path I’ve followed. While the code and repository might not be the most polished, it wasn’t originally meant to be public—only recently did I decide to share it with the world.
 
 ## Check it out live! 🚀
-https://victor-humberto.vercel.app
+
+https://victordev.is-a.dev
+
 
 ## Built With 💻
 I crafted this website using these technologies:
@@ -17,10 +19,6 @@ I crafted this website using these technologies:
 - Skills & technologies
 - Projects showcase
 
-
-
-## Quick Note! 📝
-This is the current version of my portfolio website. As I continue my Computer Science journey and keep improving my web development skills, I'll be working on a complete redesign in the coming months. The next version will incorporate all the cool new stuff I'm learning! ✨
 
 ## Want to run it locally? 🔧
 1. Clone the repo:
