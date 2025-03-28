@@ -28,10 +28,12 @@ const SkillsOverview = ({ currentSection }) => {
 
   return (
     <Card className="bg-zinc-900/20 border-zinc-800/30 backdrop-blur-sm h-full transform transition-all duration-300 hover:bg-zinc-800/30 hover:border-blue-500/30">
-      <CardContent className="p-6 h-full bg-transparent">
+      <CardContent className="p-4"> {/* Changed from p-6 to p-4 */}
         <div className="flex flex-col h-full">
-          <h3 className="text-xl font-semibold text-zinc-50 mb-4">Core Competencies</h3>
-          <div className="grid grid-cols-1 gap-4 flex-grow">
+          <h3 className="text-xl font-semibold text-zinc-50 mb-3"> {/* Changed from mb-4 to mb-3 */}
+            Core Competencies
+          </h3>
+          <div className="grid grid-cols-1 gap-3 flex-grow"> {/* Changed from gap-4 to gap-3 */}
             {skills.map((skill, index) => (
               <SkillCard 
                 key={index}

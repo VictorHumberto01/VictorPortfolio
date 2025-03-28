@@ -13,6 +13,7 @@ import ProjectsSection from '@/components/sections/ProjectsSection/ProjectsSecti
 import Timeline from '@/components/ui/Timeline';
 import Footer from '@/components/ui/Footer';
 import CustomCursor from '@/components/ui/CustomCursor';
+import ContactFooter from '@/components/ui/ContactFooter';
 
 const Portfolio = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -479,6 +480,7 @@ const scrollToSection = (index) => {
         id='projects'
       />
       </div>
+      {!isMobile && <ContactFooter />}
     </motion.div>
   );
 };
