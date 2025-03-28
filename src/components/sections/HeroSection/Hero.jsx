@@ -218,37 +218,7 @@ const AnimatedHero = () => {
         </motion.div>
       </motion.div>
 
-      {/* Fixed Scroll Down Hint - Safari Mobile Compatible */}
-      <motion.div 
-        className="absolute bottom-8 transform -translate-x-[calc(50%+3px)] left-1/2 flex flex-col items-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 0.5 }}
-      >
-        <motion.span
-          className="text-zinc-400 text-sm mb-2"
-          initial={{ opacity: 0.6 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, repeat: 0, repeatType: "reverse" }}
-        >
-        </motion.span>
-        <motion.div
-          onClick={scrollToContent}
-          className="cursor-pointer p-2 rounded-full bg-blue-500/10 border border-blue-500/20 hover:bg-blue-500/20 transition-colors"
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          animate={{ 
-            y: [0, 8, 0],
-          }}
-          transition={{ 
-            duration: 1.5, 
-            repeat: Infinity,
-            repeatType: "loop"
-          }}
-        >
-          <ChevronDown className="h-5 w-5 text-blue-400" />
-        </motion.div>
-      </motion.div>
+  
     </div>
   );
 };
