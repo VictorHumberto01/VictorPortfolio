@@ -42,7 +42,7 @@ npm run dev
 
 If you have any questions or just want to chat, feel free to reach out to me!
 
-- **Email:** [victorestanislau2005@gmail.com](mailto:victorestanislau2005@gmail.com)
+- **Email:** [victor.humberto.dev@gmail.com](mailto:victor.humberto.dev@gmail.com)
 - **LinkedIn:** [Victor Humberto](https://www.linkedin.com/authwall?trk=gf&trkInfo=AQExOJpmx2bZ1QAAAZUa7LuISiNHFJCrBucaCRtf2mYZL1Old_rmFpKnCnPWXE4ksiDbjnyRtiC0yr1p1qXzLNGR8Ld9IqgEEWoowuiYUHIIRzRAdPdhLhpRaKkhiGoV3ePM6rQ=&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fin%2Fvictor-gon%25C3%25A7alves-98708a349%2F)
 
 
