@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Victor Portfolio",
+  title: "Victor Humberto",
   description: "Full-stack developer passionate about building innovative solutions"
 };
 
