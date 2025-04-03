@@ -225,6 +225,14 @@ const Portfolio = () => {
 
   const projects = [
     {
+      title: "Gustavo Portfolio",
+      description:
+        "A law school themed portfolio page developed with NextJS and TailwindCSS. Features a clean and professional design to showcase Gustavo’s achievements and work.",
+      banner: "/images/gustavo.png",
+      projectUrl: "https://github.com/VictorHumberto01/gustavoportfolio",
+      disabled: true,
+    },
+    {
       title: "My Personal Porfolio",
       description: "My personal portfolio page. It was made using NextJS and TailwindCSS. It is a simple and elegant page that shows my skills and projects. It is a work in progress and will be updated as I progress in my career.",
       banner: "/images/portfolio.png",

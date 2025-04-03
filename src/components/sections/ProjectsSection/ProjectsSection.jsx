@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Briefcase } from 'lucide-react';
 import ProjectCard from './ProjectCard';
+import ContactFooter from '@/components/ui/ContactFooter';
 import Footer from '@/components/ui/Footer';
 
 const ProjectsSection = ({ currentSection, sectionsRef, projects, isMobile }) => {
@@ -44,6 +45,7 @@ const ProjectsSection = ({ currentSection, sectionsRef, projects, isMobile }) =>
         </div>
       </motion.div>
       
+      <ContactFooter />
       <Footer/>
     </section>
   );
