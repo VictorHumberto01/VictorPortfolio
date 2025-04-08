@@ -2,8 +2,33 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { useLanguage } from '../../../context/LanguageContext';
+
+// Add translations
+const translations = {
+  en: {
+    title: "Skills & Expertise",
+    subtitle: "My tech stack",
+    categories: {
+      Frontend: "Frontend",
+      Backend: "Backend",
+      Tools: "Tools"
+    }
+  },
+  pt: {
+    title: "Habilidades & Experiência",
+    subtitle: "Minha stack tecnológica",
+    categories: {
+      Frontend: "Frontend",
+      Backend: "Backend",
+      Tools: "Ferramentas"
+    }
+  }
+};
 
 const SkillsSection = ({ skills, currentSection, sectionsRef }) => {
+  const { language } = useLanguage();
+
   return (
     <section 
       id='skills'
@@ -16,14 +41,14 @@ const SkillsSection = ({ skills, currentSection, sectionsRef }) => {
         animate={currentSection === 2 ? { opacity: 1 } : {}}
         transition={{ duration: 0.8 }}
       >
-        <SkillsHeader currentSection={currentSection} />
-        <SkillsGrid skills={skills} currentSection={currentSection} />
+        <SkillsHeader currentSection={currentSection} language={language} />
+        <SkillsGrid skills={skills} currentSection={currentSection} language={language} />
       </motion.div>
     </section>
   );
 };
 
-const SkillsHeader = ({ currentSection }) => {
+const SkillsHeader = ({ currentSection, language }) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -31,13 +56,13 @@ const SkillsHeader = ({ currentSection }) => {
       transition={{ duration: 0.5 }}
       className="relative z-10"
     >
-      <h2 className="text-3xl font-bold text-zinc-50 mb-2">Skills & Expertise</h2>
-      <p className="text-zinc-400 mb-8">My tech stack</p>
+      <h2 className="text-3xl font-bold text-zinc-50 mb-2">{translations[language].title}</h2>
+      <p className="text-zinc-400 mb-8">{translations[language].subtitle}</p>
     </motion.div>
   );
 };
 
-const SkillsGrid = ({ skills, currentSection }) => {
+const SkillsGrid = ({ skills, currentSection, language }) => {
   return (
     <motion.div 
       className="grid grid-cols-1 md:grid-cols-2 gap-8"
@@ -51,13 +76,14 @@ const SkillsGrid = ({ skills, currentSection }) => {
           category={category} 
           categoryIndex={categoryIndex} 
           currentSection={currentSection} 
+          language={language}
         />
       ))}
     </motion.div>
   );
 };
 
-const SkillCategory = ({ category, categoryIndex, currentSection }) => {
+const SkillCategory = ({ category, categoryIndex, currentSection, language }) => {
   return (
     <motion.div
       className="space-y-6"
@@ -70,7 +96,9 @@ const SkillCategory = ({ category, categoryIndex, currentSection }) => {
         stiffness: 100
       }}
     >
-      <h3 className="text-xl font-semibold text-zinc-50">{category.name}</h3>
+      <h3 className="text-xl font-semibold text-zinc-50">
+        {translations[language].categories[category.name]}
+      </h3>
       <div className="grid grid-cols-2 gap-4">
         {category.items.map((item, index) => (
           <SkillItem 

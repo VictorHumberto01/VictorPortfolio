@@ -4,8 +4,23 @@ import { motion } from 'framer-motion';
 import AboutStory from './AboutStory';
 import LocationInfo from './LocationInfo';
 import SkillsOverview from './SkillsOverview';
+import { useLanguage } from '../../../context/LanguageContext';
+
+// Add translations
+const translations = {
+  en: {
+    title: "About Me",
+    subtitle: "Turning passion into innovation, one line of code at a time"
+  },
+  pt: {
+    title: "Sobre Mim",
+    subtitle: "Transformando paixão em inovação, uma linha de código por vez"
+  }
+};
 
 const AboutSection = ({ currentSection, sectionsRef }) => {
+  const { language } = useLanguage();
+
   return (
     <section 
       id='about'
@@ -24,8 +39,8 @@ const AboutSection = ({ currentSection, sectionsRef }) => {
           transition={{ duration: 0.5 }}
           className="relative z-10"
         >
-          <h2 className="text-3xl font-bold text-zinc-50 mb-2">About Me</h2>
-          <p className="text-zinc-400 mb-8">Turning passion into innovation, one line of code at a time</p>
+          <h2 className="text-3xl font-bold text-zinc-50 mb-2">{translations[language].title}</h2>
+          <p className="text-zinc-400 mb-8">{translations[language].subtitle}</p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 h-full">

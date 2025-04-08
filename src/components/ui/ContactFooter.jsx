@@ -1,37 +1,76 @@
 import React, { useState, useEffect } from 'react';
 import { Command } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '@/context/LanguageContext';
+
+const translations = {
+  en: {
+    searchPlaceholder: "Search contact info...",
+    sectionTitle: "Contact Information",
+    pressToOpen: "Press to open",
+    contactItems: [
+      { 
+        icon: '📧', 
+        label: 'Email',
+        value: 'victor.humberto.dev@gmail.com',
+        action: () => window.open('mailto:victor.humberto.dev@gmail.com')
+      },
+      { 
+        icon: '🌎', 
+        label: 'Location',
+        value: 'Belo Horizonte, MG - Brazil'
+      },
+      { 
+        icon: '💼', 
+        label: 'LinkedIn',
+        value: 'Victor Gonçalves',
+        action: () => window.open('https://www.linkedin.com/in/victor-gonçalves-98708a349/')
+      },
+      { 
+        icon: '💻', 
+        label: 'GitHub',
+        value: 'VictorHumberto01',
+        action: () => window.open('https://github.com/VictorHumberto01')
+      }
+    ]
+  },
+  pt: {
+    searchPlaceholder: "Buscar informações de contato...",
+    sectionTitle: "Informações de Contato",
+    pressToOpen: "Pressione para abrir",
+    contactItems: [
+      { 
+        icon: '📧', 
+        label: 'Email',
+        value: 'victor.humberto.dev@gmail.com',
+        action: () => window.open('mailto:victor.humberto.dev@gmail.com')
+      },
+      { 
+        icon: '🌎', 
+        label: 'Localização',
+        value: 'Belo Horizonte, MG - Brasil'
+      },
+      { 
+        icon: '💼', 
+        label: 'LinkedIn',
+        value: 'Victor Gonçalves',
+        action: () => window.open('https://www.linkedin.com/in/victor-gonçalves-98708a349/')
+      },
+      { 
+        icon: '💻', 
+        label: 'GitHub',
+        value: 'VictorHumberto01',
+        action: () => window.open('https://github.com/VictorHumberto01')
+      }
+    ]
+  }
+};
 
 const CommandPalette = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
-
-  const contactItems = [
-    { 
-      icon: '📧', 
-      label: 'Email',
-      value: 'victor.humberto.dev@gmail.com',
-      action: () => window.open('mailto:victor.humberto.dev@gmail.com')
-    },
-
-    { 
-      icon: '🌎', 
-      label: 'Location',
-      value: 'Belo Horizonte, MG - Brazil'
-    },
-    { 
-      icon: '💼', 
-      label: 'LinkedIn',
-      value: 'Victor Gonçalves',
-      action: () => window.open('https://www.linkedin.com/in/victor-gonçalves-98708a349/')
-    },
-    { 
-      icon: '💻', 
-      label: 'GitHub',
-      value: 'VictorHumberto01',
-      action: () => window.open('https://github.com/VictorHumberto01')
-    }
-  ];
+  const { language } = useLanguage();
+  const t = translations[language];
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -45,7 +84,7 @@ const CommandPalette = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
-  const filteredItems = contactItems.filter(item =>
+  const filteredItems = t.contactItems.filter(item =>
     item.label.toLowerCase().includes(searchQuery.toLowerCase()) ||
     item.value.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -93,7 +132,7 @@ const CommandPalette = () => {
                   <Command className="w-4 h-4 text-zinc-400 mr-3" />
                   <input
                     type="text"
-                    placeholder="Search contact info..."
+                    placeholder={t.searchPlaceholder}
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full py-4 bg-transparent text-zinc-200 placeholder-zinc-400 outline-none text-sm"
@@ -102,7 +141,7 @@ const CommandPalette = () => {
                 </div>
 
                 <div className="py-2">
-                  <div className="px-3 py-2 text-xs text-zinc-400">Contact Information</div>
+                  <div className="px-3 py-2 text-xs text-zinc-400">{t.sectionTitle}</div>
                   {filteredItems.map((item) => (
                     <button
                       key={item.label}
@@ -120,7 +159,7 @@ const CommandPalette = () => {
                         <div className="text-sm text-zinc-200">{item.value}</div>
                       </div>
                       {item.action && (
-                        <div className="ml-3 text-xs text-zinc-500">Press to open</div>
+                        <div className="ml-3 text-xs text-zinc-500">{t.pressToOpen}</div>
                       )}
                     </button>
                   ))}

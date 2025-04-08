@@ -1,7 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Github, Mail, ArrowRight, Send, GraduationCap, MapPin, ChevronDown, PinIcon } from 'lucide-react';
+import { Github, Mail, ArrowRight, Send, GraduationCap, MapPin, ChevronDown, Languages } from 'lucide-react';
 import { AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../../../context/LanguageContext';
+
+// translation object
+const translations = {
+  en: {
+    phrases: [
+      "I help turn ideas",
+      "I transform concepts",
+      "I bring visions",
+      "I mold possibilities",
+      "I turn creativity",
+      "I shape innovation",
+      "I convert challenges"
+    ],
+    education: "Computer Science - IFMG",
+    location: "Belo Horizonte - MG",
+    greeting: "Hello 👋, I'm",
+    role: "a Full Stack Developer",
+    seamless: "into seamless",
+    digitalExp: "digital experiences"
+  },
+  pt: {
+    phrases: [
+      "Eu ajudo a transformar ideias",
+      "Eu transformo conceitos",
+      "Eu trago visões",
+      "Eu moldo possibilidades",
+      "Eu transformo criatividade",
+      "Eu formato inovação",
+      "Eu converto desafios"
+    ],
+    education: "Ciência da Computação - IFMG",
+    location: "Belo Horizonte - MG",
+    greeting: "Olá 👋, eu sou",
+    role: "um Desenvolvedor Full Stack",
+    seamless: "em experiências",
+    digitalExp: "digitais incríveis"
+  }
+};
 
 const textVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -29,15 +68,8 @@ const Tag = ({ icon: Icon, text }) => (
 
 
 const AnimatedHero = () => {
-  const phrases = [
-    "I help turn ideas",
-    "I transform concepts",
-    "I bring visions",
-    "I mold possibilities",
-    "I turn creativity",
-    "I shape innovation",
-    "I convert challenges"
-  ];
+  const { language, toggleLanguage } = useLanguage();
+  const phrases = translations[language].phrases;
   const [currentPhraseIndex, setCurrentPhraseIndex] = useState(0);
   const [displayText, setDisplayText] = useState('');
   const [isDeleting, setIsDeleting] = useState(false);
@@ -92,8 +124,8 @@ const AnimatedHero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Tag icon={GraduationCap} text="Computer Science - IFMG " />
-          <Tag icon={MapPin} text="Belo Horizonte - MG" />
+          <Tag icon={GraduationCap} text={translations[language].education} />
+          <Tag icon={MapPin} text={translations[language].location} />
         </motion.div>
 
         {/* Main Heading */}
@@ -115,9 +147,9 @@ const AnimatedHero = () => {
               </motion.span>
             </span>
             <br />
-            <span className="text-zinc-400">into seamless</span>{" "}
+            <span className="text-zinc-400">{translations[language].seamless}</span>{" "}
             <span className="bg-gradient-to-r from-blue-400 to-blue-600 bg-clip-text text-transparent">
-              digital experiences
+              {translations[language].digitalExp}
             </span>
           </motion.h1>
         </div>
@@ -129,7 +161,7 @@ const AnimatedHero = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex flex-wrap items-center justify-center gap-2 text-base sm:text-lg md:text-xl text-zinc-400"
         >
-          <span>Hello 👋, I'm</span>
+          <span>{translations[language].greeting}</span>
           <span className="text-white">Victor Humberto</span>
           <div className="w-8 sm:w-16 md:w-20 h-8 sm:h-8 md:h-10 bg-blue-500/10 hover:bg-blue-500/20 rounded-full border border-blue-500/20 transition-all duration-300 overflow-hidden">
             <img 
@@ -138,7 +170,7 @@ const AnimatedHero = () => {
               className="w-full h-full object-cover"
             />
           </div>
-          <span>a Full Stack Developer</span>
+          <span>{translations[language].role}</span>
         </motion.div>
 
         {/* Social Links */}

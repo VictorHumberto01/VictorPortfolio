@@ -1,9 +1,56 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { HomeIcon, Calendar, Briefcase, BookMarked, Clock, GraduationCap } from 'lucide-react';
+import { HomeIcon, BookMarked, Clock, GraduationCap } from 'lucide-react';
+import { useLanguage } from '../../../context/LanguageContext';
+
+const translations = {
+  en: {
+    location: {
+      title: "Location",
+      description: "Belo Horizonte, Brazil"
+    },
+    education: {
+      title: "Education",
+      description: "Computer Science",
+      subdescription: "IFMG"
+    },
+    languages: {
+      title: "Languages",
+      description: "English (C1 Advanced)"
+    },
+    timezone: {
+      title: "Time Zone",
+      description: "UTC-3 (Brazil Time)",
+      subdescription: "Flexible schedule"
+    }
+  },
+  pt: {
+    location: {
+      title: "Localização",
+      description: "Belo Horizonte, Brasil"
+    },
+    education: {
+      title: "Educação",
+      description: "Ciência da Computação",
+      subdescription: "IFMG"
+    },
+    languages: {
+      title: "Idiomas",
+      description: "Inglês (C1 Avançado)"
+    },
+    timezone: {
+      title: "Fuso Horário",
+      description: "UTC-3 (Horário de Brasília)",
+      subdescription: "Horário flexível"
+    }
+  }
+};
 
 const LocationInfo = ({ currentSection }) => {
+  const { language } = useLanguage();
+  const t = translations[language];
+
   return (
     <motion.div
       initial={{ opacity: 0, x: 50 }}
@@ -16,14 +63,14 @@ const LocationInfo = ({ currentSection }) => {
             <div className="space-y-4">
               <InfoItem 
                 icon={<HomeIcon className="h-5 w-5 text-blue-400" />} 
-                title="Location"
-                description="Belo Horizonte, Brazil"
+                title={t.location.title}
+                description={t.location.description}
               />
-                            <InfoItem 
+              <InfoItem 
                 icon={<GraduationCap className="h-5 w-5 text-blue-400" />} 
-                title="Education"
-                description="Computer Science"
-                subdescription="IFMG"
+                title={t.education.title}
+                description={t.education.description}
+                subdescription={t.education.subdescription}
               />
             </div>
           </CardContent>
@@ -34,16 +81,15 @@ const LocationInfo = ({ currentSection }) => {
             <div className="space-y-4">
               <InfoItem 
                 icon={<BookMarked className="h-5 w-5 text-blue-400" />} 
-                title="Languages"
-                description="English (C1 Advanced)"
+                title={t.languages.title}
+                description={t.languages.description}
               />
-                            <InfoItem 
+              <InfoItem 
                 icon={<Clock className="h-5 w-5 text-blue-400" />} 
-                title="Time Zone"
-                description="UTC-3 (Brazil Time)"
-                subdescription="Flexible schedule"
+                title={t.timezone.title}
+                description={t.timezone.description}
+                subdescription={t.timezone.subdescription}
               />
-
             </div>
           </CardContent>
         </Card>

@@ -5,7 +5,18 @@ import { Button } from "@/components/ui/button";
 import { ExternalLink } from "lucide-react";
 import ProjectTechStack from "./ProjectTechStack";
 
-const ProjectCard = ({ project }) => {
+const translations = {
+  en: {
+    viewProject: "View Project",
+    soon: "Soon"
+  },
+  pt: {
+    viewProject: "Ver Projeto",
+    soon: "Em Breve"
+  }
+};
+
+const ProjectCard = ({ project, language }) => {
   return (
     <Card className="group h-full flex flex-col overflow-hidden bg-zinc-900/20 border-zinc-800/30 backdrop-blur-sm hover:bg-zinc-900/30 transition-all duration-300">
       <div className="relative aspect-video overflow-hidden">
@@ -19,7 +30,7 @@ const ProjectCard = ({ project }) => {
         <h3 className="text-xl font-semibold text-zinc-50 mb-2 group-hover:text-blue-400 transition-colors duration-300">
           {project.title}
         </h3>
-        <p className="text-zinc-400 mb-4">{project.description}</p>
+        <p className="text-zinc-400 mb-4">{project.description[language]}</p>
 
         <div className="mt-2">
           <ProjectTechStack projectTitle={project.title} />
@@ -38,7 +49,7 @@ const ProjectCard = ({ project }) => {
           }
           disabled={project.disabled}
         >
-          {project.disabled ? "Soon" : "View Project"}
+          {project.disabled ? translations[language].soon : translations[language].viewProject}
           {!project.disabled && (
             <ExternalLink className="ml-2 h-4 w-4 group-hover/btn:translate-x-0.5 transition-transform duration-300" />
           )}

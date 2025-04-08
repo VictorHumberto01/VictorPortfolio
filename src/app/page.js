@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, Menu, X, ExternalLink, Code2, Briefcase, BookMarked, User, Terminal, ChevronDown, Calendar, HomeIcon } from 'lucide-react';
+import { ArrowRight, Menu, X, ExternalLink, Code2, Briefcase, BookMarked, User, Terminal, ChevronDown, Calendar, HomeIcon, Languages } from 'lucide-react';
 import { SiGithub, SiLinkedin } from 'react-icons/si';
 import { Button } from '@/components/ui/button';
 import AnimatedHero from '@/components/sections/HeroSection/Hero';
@@ -14,8 +14,11 @@ import Timeline from '@/components/ui/Timeline';
 import Footer from '@/components/ui/Footer';
 import CustomCursor from '@/components/ui/CustomCursor';
 import ContactFooter from '@/components/ui/ContactFooter';
+import { LanguageProvider } from '@/context/LanguageContext'
+import { useLanguage } from '@/context/LanguageContext';
 
 const Portfolio = () => {
+  const { language, toggleLanguage } = useLanguage();
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   const [currentSection, setCurrentSection] = useState(0);
@@ -66,62 +69,7 @@ const Portfolio = () => {
     { id: 'journey', label: 'Journey', icon: BookMarked },
     { id: 'projects', label: 'Projects', icon: Briefcase }
   ];
-  
-  const journey = [
-    {
-        year: "2025",
-        specificDate: "Apr",
-        title: "Computer Science Student",
-        location: "Instituto Federal de Minas Gerais (IFMG)",
-        description: "Starting my degree in Computer Science at IFMG while living in Belo Horizonte. Focused on deepening my understanding of fundamental and advanced computer science concepts.",
-        skills: ["Data Structures", "Algorithms", "Software Engineering", "Computer Science", "Operating Systems", "Computer Architecture"]
-    },
-    {
-      year: "2025",
-      specificDate: "Mar",
-      title: "Backend concepts, OOP and good practices",
-      location: "Self-taught",
-      description: "Learning Java focusing on clean architecture, design patterns, and best practices for building scalable backend systems.",
-      skills: ["Java", "Object-oriented programming", "Clean Architecture", "Design Patterns", "Enterprise Development"]
-    },
-    {
-        year: "2025",
-        specificDate: "Jan",
-        title: "General Concepts",
-        location: "Self-taught",
-        description: "Prepared for Computer Science degree by studying core programming concepts and languages. Focused on algorithms, data structures, and system-level programming.",
-        skills: ["C", "C++", "Algorithms", "Data Structures"]
-    },
-    {
-        year: "2024",
-        title: "Software Developer at Quantium Labs",
-        location: "Quantium Labs",
-        description: "Continuing my journey at Quantium Labs, working on various software projects while improving my technical and problem-solving skills.",
-        skills: ["ReactJS", "TailwindCSS", "Project Management", "Team Leadership", "System Design"
-        ]
-    },
-    {
-        year: "2023",
-        title: "Web Development Journey",
-        location: "Self-taught",
-        description: "Transitioned to web development, diving deep into modern technologies and frameworks. Focused on building practical applications and expanding my technical toolkit.",
-        skills: ["JavaScript", "ReactJS", "TailwindCSS", "Modern Web Dev", "Typescript", "ExpressJS", "Database"]
-    },
-    {
-        year: "2022",
-        title: "Data Science Explorer",
-        location: "Self-taught",
-        description: "Discovered and explored data science, focusing on machine learning and deep learning frameworks. Learned to build and train neural networks.",
-        skills: ["Neural Networks", "TensorFlow", "PyTorch", "Data Science", "Numpy"]
-    },
-    {
-        year: "2021",
-        title: "Programming Beginnings",
-        location: "First Projects",
-        description: "Started my programming journey at age 15. Created my first significant project: a Discord bot for playing YouTube music, which sparked my passion for development.",
-        skills: ["Python", "Discord.js", "Basic Programming"]
-    }
-];
+
 
   useEffect(() => {
     const handleMouseMove = (e) => {
@@ -225,40 +173,57 @@ const Portfolio = () => {
 
   const projects = [
     {
-      title: "Gustavo Portfolio",
-      description:
-        "A law school themed portfolio page developed with NextJS and TailwindCSS. Features a clean and professional design to showcase Gustavo’s achievements and work.",
+      title: "Gustavo's Portfolio",
+      description: {
+        en: "A law school themed portfolio page developed with NextJS and TailwindCSS. Features a clean and professional design to showcase Gustavo's achievements and work.",
+        pt: "Uma página de portfólio com tema de faculdade de direito desenvolvida com NextJS e TailwindCSS. Possui um design limpo e profissional para mostrar as conquistas e o trabalho do Gustavo."
+      },
       banner: "/images/gustavo.png",
       projectUrl: "https://github.com/VictorHumberto01/gustavoportfolio",
       disabled: true,
     },
     {
-      title: "My Personal Porfolio",
-      description: "My personal portfolio page. It was made using NextJS and TailwindCSS. It is a simple and elegant page that shows my skills and projects. It is a work in progress and will be updated as I progress in my career.",
+      title: "My Personal Portfolio",
+      description: {
+        en: "My personal portfolio page. It was made using NextJS and TailwindCSS. It is a simple and elegant page that shows my skills and projects. It is a work in progress and will be updated as I progress in my career.",
+        pt: "Minha página de portfólio pessoal. Foi feita usando NextJS e TailwindCSS. É uma página simples e elegante que mostra minhas habilidades e projetos. É um trabalho em andamento e será atualizado conforme eu progrido na minha carreira."
+      },
       banner: "/images/portfolio.png",
       projectUrl: "https://github.com/VictorHumberto01/VictorPortfolio"
     },
     {
       title: "Céus",
-      description: "A groundbreaking location based game developed for a client under Quantium Labs with ReactJS and TailwindCSS. Features a story system that storage messages and a map system that shows to the player where to go to see the stories.",
+      description: {
+        en: "A groundbreaking location based game developed for a client under Quantium Labs with ReactJS and TailwindCSS. Features a story system that storage messages and a map system that shows to the player where to go to see the stories.",
+        pt: "Um jogo inovador baseado em localização desenvolvido para um cliente sob a Quantium Labs com ReactJS e TailwindCSS. Possui um sistema de história que armazena mensagens e um sistema de mapa que mostra ao jogador onde ir para ver as histórias."
+      },
       banner: "/images/ceus.png",
       projectUrl: "https://ceusgame.com",
     },
     {
-      title: "Aline Nery Portfolio",
-      description: "A personal Portfolio page and event ticket selling system developed for a executive coach under Quantium Labs with NextJS. Features a complete admin dashboard for managing events and tickets.",
+      title: "Aline Nery's Portfolio",
+      description: {
+        en: "A personal Portfolio page and event ticket selling system developed for a executive coach under Quantium Labs with NextJS. Features a complete admin dashboard for managing events and tickets.",
+        pt: "Uma página de portfólio pessoal e sistema de venda de ingressos para eventos desenvolvido para uma coach executiva sob a Quantium Labs com NextJS. Possui um painel administrativo completo para gerenciar eventos e ingressos."
+      },
       banner: "/images/aline.png",
       projectUrl: "https://alinenery.com.br",
     },
     {
       title: "LlamaBridge",
-      description: "A server and client interface to host your own instance of the Llama model. Uses Ollama to generate the model and a server to host the model. The client is built using Swift for MacOS and commmunicate to local server run in the same network.",
+      description: {
+        en: "A server and client interface to host your own instance of the Llama model. Uses Ollama to generate the model and a server to host the model. The client is built using Swift for MacOS and commmunicate to local server run in the same network.",
+        pt: "Uma interface de servidor e cliente para hospedar sua própria instância do modelo Llama. Usa Ollama para gerar o modelo e um servidor para hospedar o modelo. O cliente é construído usando Swift para MacOS e se comunica com o servidor local executado na mesma rede."
+      },
       banner: "/images/llama.png",
       projectUrl: "https://github.com/VictorHumberto01/LlamaBridge",
     },
     {
       title: "Music Discord Bot",
-      description: "My first project. I started as most youtube discord bots were seizing from existing. Can play music from YouTube videos. Developed using Python and Pycord. Features a queue system, loop, playlist support and slash commands. It was made as a experiment and was never used in production.",
+      description: {
+        en: "My first project. I started as most youtube discord bots were seizing from existing. Can play music from YouTube videos. Developed using Python and Pycord. Features a queue system, loop, playlist support and slash commands. It was made as a experiment and was never used in production.",
+        pt: "Meu primeiro projeto. Comecei quando a maioria dos bots do discord do youtube estava deixando de existir. Pode tocar músicas de vídeos do YouTube. Desenvolvido usando Python e Pycord. Possui sistema de fila, loop, suporte a playlist e comandos slash. Foi feito como um experimento e nunca foi usado em produção."
+      },
       banner: "/images/music.png",
       projectUrl: "https://github.com/VictorHumberto01/Tubetinho",
     }
@@ -292,7 +257,49 @@ const scrollToContent = () => {
       className="relative bg-zinc-950 text-zinc-50 overflow-hidden [&]:cursor-none [&_*]:cursor-none [&_button]:cursor-none [&_a]:cursor-none"
     >
       {!isMobile && <CustomCursor />}
-      <Timeline />
+      
+      {!isMobile ? (
+        // Desktop layout - both buttons side by side
+        <div className="fixed right-8 top-6 z-50 flex items-center gap-4">
+          {/* Language Toggle */}
+          <motion.button
+            onClick={toggleLanguage}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="flex items-center backdrop-blur-sm gap-1.5 px-3 py-1.5 bg-gradient-to-r from-blue-500/20 to-blue-600/20 rounded-full border border-blue-500/30 hover:border-blue-400/40 transition-colors"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Languages className="h-4 w-4 text-blue-400" />
+            <span className="text-sm font-medium text-white">
+              {language === 'en' ? 'EN' : 'PT'}
+            </span>
+          </motion.button>
+          
+          <Timeline />
+        </div>
+      ) : (
+        // Mobile layout - stacked vertically
+        <div className="fixed top-4 right-4 z-[70] flex flex-col gap-2">
+          <motion.button
+            onClick={toggleLanguage}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 }}
+            className="flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-blue-500/20 to-blue-600/20 rounded-full border border-blue-500/30 hover:border-blue-400/40 transition-colors"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            <Languages className="h-4 w-4 text-blue-400" />
+            <span className="text-sm font-medium text-white">
+              {language === 'en' ? 'EN' : 'PT'}
+            </span>
+          </motion.button>
+          
+          <Timeline />
+        </div>
+      )}
       
       {/* Background Effects */}
       <div className="fixed inset-0 pointer-events-none">
@@ -323,9 +330,9 @@ const scrollToContent = () => {
         >
         </motion.div>
       </div>
-    
-          {/* Mobile Navigation */}
-          {isMobile && (
+      
+      {/* Mobile Navigation */}
+      {isMobile && (
         <nav className="fixed top-0 left-0 right-0 z-[60] bg-zinc-900/30 backdrop-blur-xl p-4 flex justify-between items-center">
           <Button 
             variant="ghost" 
@@ -476,7 +483,6 @@ const scrollToContent = () => {
 
         {/* Journey Section */}
         <JourneySection
-            journey={journey}
             currentSection={currentSection}
             sectionsRef={sectionsRef}
             journeyRef={journeyRef}

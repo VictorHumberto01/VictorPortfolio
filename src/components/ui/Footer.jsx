@@ -5,16 +5,57 @@ import { motion } from 'framer-motion';
 import { SiGithub, SiLinkedin} from 'react-icons/si';
 import { Mail, ExternalLink, ChevronUp, Code } from 'lucide-react';
 import { Button } from '@/components/ui/button'; 
+import { useLanguage } from '@/context/LanguageContext';
 
-const Footer = ( sectionsRef ) => {
+const translations = {
+  en: {
+    about: "Building digital experiences with a focus on clean code, beautiful design, and exceptional user experience.",
+    quickLinks: "Quick Links",
+    links: {
+      home: "Home",
+      about: "About Me",
+      skills: "Skills & Tools",
+      journey: "My Journey",
+      projects: "Projects"
+    },
+    contact: {
+      title: "Get In Touch",
+      description: "Interested in working together? Feel free to reach out for collaborations or just a friendly hello.",
+      button: "Contact Me"
+    },
+    copyright: {
+      rights: "All rights reserved.",
+      built: "Built with Love❤️, Next.js, TailwindCSS, and Framer Motion"
+    },
+    viewSource: "View Source"
+  },
+  pt: {
+    about: "Construindo experiências digitais com foco em código limpo, design bonito e experiência excepcional do usuário.",
+    quickLinks: "Links Rápidos",
+    links: {
+      home: "Início",
+      about: "Sobre Mim",
+      skills: "Habilidades & Ferramentas",
+      journey: "Minha Jornada",
+      projects: "Projetos"
+    },
+    contact: {
+      title: "Entre em Contato",
+      description: "Interessado em trabalhar junto? Sinta-se à vontade para entrar em contato para colaborações ou apenas um olá amigável.",
+      button: "Contate-me"
+    },
+    copyright: {
+      rights: "Todos os direitos reservados.",
+      built: "Feito com Amor❤️, Next.js, TailwindCSS e Framer Motion"
+    },
+    viewSource: "Ver Código"
+  }
+};
+
+const Footer = ({ sectionsRef }) => {
+  const { language } = useLanguage();
+  const t = translations[language];
   const currentYear = new Date().getFullYear();
-
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  };
 
   const scrollToSectionById = (id) => {
     const section = document.getElementById(id);
@@ -25,7 +66,6 @@ const Footer = ( sectionsRef ) => {
 
   return (
     <footer className="relative border-t border-zinc-800/30 backdrop-blur-sm bg-zinc-950/60">
-      {/* Gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-t from-blue-500/5 to-transparent pointer-events-none" />
       
       <div className="container mx-auto px-4 py-12">
@@ -42,10 +82,9 @@ const Footer = ( sectionsRef ) => {
               <h3 className="text-2xl font-bold text-zinc-50">Victor Humberto</h3>
             </div>
             <p className="text-zinc-300 leading-relaxed">
-              Building digital experiences with a focus on clean code, beautiful design, and exceptional user experience.
+              {t.about}
             </p>
             
-            {/* Social links */}
             <div className="flex space-x-4">
               <SocialButton icon={<SiGithub className="h-5 w-5" />} href="https://github.com/VictorHumberto01" label="GitHub" />
               <SocialButton icon={<SiLinkedin className="h-5 w-5" />} href="https://www.linkedin.com/in/victor-gonçalves-98708a349/" label="LinkedIn" />
@@ -53,24 +92,23 @@ const Footer = ( sectionsRef ) => {
             </div>
           </motion.div>
 
-         {/* Quick Links */}
-         <motion.div
+          {/* Quick Links */}
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <h4 className="text-lg font-semibold text-zinc-50">Quick Links</h4>
+            <h4 className="text-lg font-semibold text-zinc-50">{t.quickLinks}</h4>
             <ul className="space-y-3">
-              <FooterLink onClick={() => scrollToSectionById('home')} label="Home" />
-              <FooterLink onClick={() => scrollToSectionById('about')} label="About Me" />
-              <FooterLink onClick={() => scrollToSectionById('skills')} label="Skills & Tools" />
-              <FooterLink onClick={() => scrollToSectionById('journey')} label="My Journey" />
-              <FooterLink onClick={() => scrollToSectionById('projects')} label="Projects" />
+              <FooterLink onClick={() => scrollToSectionById('home')} label={t.links.home} />
+              <FooterLink onClick={() => scrollToSectionById('about')} label={t.links.about} />
+              <FooterLink onClick={() => scrollToSectionById('skills')} label={t.links.skills} />
+              <FooterLink onClick={() => scrollToSectionById('journey')} label={t.links.journey} />
+              <FooterLink onClick={() => scrollToSectionById('projects')} label={t.links.projects} />
             </ul>
           </motion.div>
-         
 
           {/* Contact */}
           <motion.div
@@ -80,21 +118,21 @@ const Footer = ( sectionsRef ) => {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <h4 className="text-lg font-semibold text-zinc-50">Get In Touch</h4>
+            <h4 className="text-lg font-semibold text-zinc-50">{t.contact.title}</h4>
             <p className="text-zinc-300">
-              Interested in working together? Feel free to reach out for collaborations or just a friendly hello.
+              {t.contact.description}
             </p>
             <Button 
               className="bg-blue-500/20 hover:bg-blue-500/30 text-blue-300 hover:text-blue-200 border border-blue-500/30 hover:border-blue-500/50 group"
               onClick={() => window.location.href = 'mailto:victor.humberto.dev@gmail.com'}
             >
-              Contact Me
+              {t.contact.button}
               <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform duration-300" />
             </Button>
           </motion.div>
         </div>
 
-        {/* Copyright and Back to Top */}
+        {/* Copyright and Source */}
         <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -104,10 +142,10 @@ const Footer = ( sectionsRef ) => {
         >
           <div className="text-center md:text-left">
             <p className="text-zinc-400 text-sm">
-              © {currentYear} Victor Gonçalves. All rights reserved.
+              © {currentYear} Victor Gonçalves. {t.copyright.rights}
             </p>
             <p className="text-zinc-500 text-xs mt-1">
-              Built with Love❤️, Next.js, TailwindCSS, and Framer Motion
+              {t.copyright.built}
             </p>
           </div>
           
@@ -120,10 +158,9 @@ const Footer = ( sectionsRef ) => {
               whileHover={{ y: -2 }}
             >
               <SiGithub className="h-4 w-4 mr-2" />
-              <span>View Source</span>
+              <span>{t.viewSource}</span>
               <ExternalLink className="ml-1 h-3 w-3 group-hover:translate-x-1 transition-transform duration-300" />
             </motion.a>
-
           </div>
         </motion.div>
       </div>

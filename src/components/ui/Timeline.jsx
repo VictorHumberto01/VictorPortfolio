@@ -4,6 +4,50 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, Clock } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { useLanguage } from '@/context/LanguageContext';
+
+const translations = {
+  en: {
+    button: "Timeline",
+    clickToTravel: "Click to time travel",
+    timeTravel: "TIME TRAVEL INITIATED",
+    travelingTo: "Traveling to",
+    versions: [
+      { 
+        version: "v2.0", 
+        date: "Feb 2025", 
+        path: "/v2", 
+        features: "More polished sections, loading screen and new Hero Decoration element" 
+      },
+      { 
+        version: "v1.0", 
+        date: "Jan 2025", 
+        path: "/v1", 
+        features: "Basic portfolio, First design of the Hero, Skills and Projects" 
+      }
+    ]
+  },
+  pt: {
+    button: "Linha do Tempo",
+    clickToTravel: "Clique para viajar no tempo",
+    timeTravel: "VIAGEM NO TEMPO INICIADA",
+    travelingTo: "Viajando para",
+    versions: [
+      { 
+        version: "v2.0", 
+        date: "Fev 2025", 
+        path: "/v2", 
+        features: "Seções mais polidas, tela de carregamento e novo elemento de decoração do Hero" 
+      },
+      { 
+        version: "v1.0", 
+        date: "Jan 2025", 
+        path: "/v1", 
+        features: "Portfólio básico, Primeiro design do Hero, Habilidades e Projetos" 
+      }
+    ]
+  }
+};
 
 const Timeline = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +55,9 @@ const Timeline = () => {
   const [targetPath, setTargetPath] = useState('');
   const [isMobile, setIsMobile] = useState(false);
   const router = useRouter();
-  
+  const { language } = useLanguage();
+  const t = translations[language];
+
   const versions = [
     { version: "v2.0", date: "Feb 2025", path: "/v2", features: "More polished sections, loading screen and new Hero Decoration element" },
     { version: "v1.0", date: "Jan 2025", path: "/v1", features: "Basic portfolio, First design of the Hero, Skills and Projects" }
@@ -246,7 +292,7 @@ const Timeline = () => {
                   animate={{ letterSpacing: "0.2em" }}
                   transition={{ duration: 3 }}
                 >
-                  TIME TRAVEL INITIATED
+                  {t.timeTravel}
                 </motion.h2>
                 <motion.p
                   className="text-blue-200 text-xl"
@@ -260,7 +306,7 @@ const Timeline = () => {
                     repeatType: "reverse"
                   }}
                 >
-                  Traveling to {targetPath.replace("/", "")} version...
+                  {t.travelingTo} {targetPath.replace("/", "")} version...
                 </motion.p>
               </motion.div>
               
@@ -307,7 +353,7 @@ const Timeline = () => {
       </AnimatePresence>
 
       {/* Regular timeline UI - Now with responsive positioning */}
-      <div className={`fixed ${isMobile ? 'top-4 right-4 z-[70]' : 'top-6 right-10 z-20'}`}>
+      <div className={`fixed backdrop-blur-sm ${isMobile ? 'top-4 right-24 z-[70]' : 'top-6 right-28 z-20'}`}>
         <motion.div
           className="relative"
           initial={{ opacity: 0 }}
@@ -321,7 +367,7 @@ const Timeline = () => {
             whileTap={{ scale: 0.95 }}
           >
             <Calendar className="h-4 w-4 text-blue-400" />
-            <span className="text-sm font-medium text-white">Timeline</span>
+            <span className="text-sm font-medium text-white">{t.button}</span>
           </motion.button>
 
           {/* Timeline dropdown - Adjusted position for mobile */}
@@ -337,10 +383,10 @@ const Timeline = () => {
               >
                 <div className="p-3">
                   <div className="text-xs text-zinc-400 mb-2 flex items-center">
-                    <Clock className="h-3 w-3 mr-1" />Click to time travel
+                    <Clock className="h-3 w-3 mr-1" />{t.clickToTravel}
                   </div>
                   <div className="space-y-2">
-                    {versions.map((item, index) => (
+                    {t.versions.map((item, index) => (
                       <motion.div
                         key={index}
                         className="block"
