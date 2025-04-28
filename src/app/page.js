@@ -179,8 +179,7 @@ const Portfolio = () => {
         pt: "Uma página de portfólio com tema de faculdade de direito desenvolvida com NextJS e TailwindCSS. Possui um design limpo e profissional para mostrar as conquistas e o trabalho do Gustavo."
       },
       banner: "/images/gustavo.png",
-      projectUrl: "https://github.com/VictorHumberto01/gustavoportfolio",
-      disabled: true,
+      projectUrl: "https://gustavoportfolio-lac.vercel.app",
     },
     {
       title: "My Personal Portfolio",
@@ -259,7 +258,7 @@ const scrollToContent = () => {
       {!isMobile && <CustomCursor />}
       
       {!isMobile ? (
-        // Desktop layout - both buttons side by side
+        // Desktop layout
         <div className="fixed right-8 top-6 z-50 flex items-center gap-4">
           {/* Language Toggle */}
           <motion.button
