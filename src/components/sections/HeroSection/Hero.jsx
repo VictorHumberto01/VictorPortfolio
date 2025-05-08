@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { AnimatePresence } from "framer-motion";
 import { useLanguage } from "../../../context/LanguageContext";
-import ChangelogMessage from "@/components/ui/ChangelogMessage";
+
 
 // translation object
 const translations = {
