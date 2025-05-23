@@ -41,7 +41,7 @@ const Portfolio = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const journeyRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
-  
+
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
@@ -262,15 +262,6 @@ const Portfolio = () => {
       },
       banner: "/images/gustavo.png",
       projectUrl: "https://gustavoportfolio-lac.vercel.app",
-    },
-    {
-      title: "My Personal Portfolio",
-      description: {
-        en: "My personal portfolio page. It was made using NextJS and TailwindCSS. It is a simple and elegant page that shows my skills and projects. It is a work in progress and will be updated as I progress in my career.",
-        pt: "Minha página de portfólio pessoal. Foi feita usando NextJS e TailwindCSS. É uma página simples e elegante que mostra minhas habilidades e projetos. É um trabalho em andamento e será atualizado conforme eu progrido na minha carreira.",
-      },
-      banner: "/images/portfolio.png",
-      projectUrl: "https://github.com/VictorHumberto01/VictorPortfolio",
     },
     {
       title: "Céus",
