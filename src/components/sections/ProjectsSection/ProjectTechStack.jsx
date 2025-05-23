@@ -14,7 +14,7 @@ const TechBadge = ({ icon, name }) => (
 const ProjectTechStack = ({ projectTitle }) => {
   const getTechStack = () => {
     switch (projectTitle) {
-      case "Gustavo Portfolio":
+      case "Gustavo's Portfolio":
         return [
           {
             icon: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/next.svg",
@@ -30,23 +30,7 @@ const ProjectTechStack = ({ projectTitle }) => {
           },
         ];
 
-      case "My Personal Porfolio":
-        return [
-          {
-            icon: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/next.svg",
-            name: "Next.js",
-          },
-          {
-            icon: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/react.svg",
-            name: "React",
-          },
-          {
-            icon: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/tailwind.svg",
-            name: "Tailwind CSS",
-          },
-        ];
-
-      case "Aline Nery Portfolio":
+      case "Aline Nery's Portfolio":
         return [
           {
             icon: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/javascript.svg",
