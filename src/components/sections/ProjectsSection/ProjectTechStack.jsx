@@ -121,7 +121,7 @@ const ProjectTechStack = ({ projectTitle }) => {
             name: "Python",
           },
           {
-            icon: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/014b5e80bd75eff6fbca52f0bf2c10b43e3e1709/main/go.svg",
+            icon: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/bd6f78384c0047b024835c00965299e304a1b116/main/go.svg",
             name: "Go",
           },
           {
@@ -129,7 +129,7 @@ const ProjectTechStack = ({ projectTitle }) => {
             name: "PostgreSQL",
           },
           {
-            icon: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/main/electron.svg",
+            icon: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/bd6f78384c0047b024835c00965299e304a1b116/main/electron.svg",
             name: "Electron",
           },
         ];
