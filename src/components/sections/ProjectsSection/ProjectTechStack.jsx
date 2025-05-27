@@ -102,6 +102,38 @@ const ProjectTechStack = ({ projectTitle }) => {
           },
         ];
 
+      case "CLab":
+        return [
+          {
+            icon: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/react.svg",
+            name: "React",
+          },
+          {
+            icon: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/javascript.svg",
+            name: "JavaScript",
+          },
+          {
+            icon: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/tailwind.svg",
+            name: "Tailwind CSS",
+          },
+          {
+            icon: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/014b5e80bd75eff6fbca52f0bf2c10b43e3e1709/main/python.svg",
+            name: "Python",
+          },
+          {
+            icon: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/014b5e80bd75eff6fbca52f0bf2c10b43e3e1709/main/go.svg",
+            name: "Go",
+          },
+          {
+            icon: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/6a09879637bc9c4096c092081c5b7036558c0de2/main/postgresql.svg",
+            name: "PostgreSQL",
+          },
+          {
+            icon: "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/main/electron.svg",
+            name: "Electron",
+          },
+        ];
+
       default:
         return [];
     }

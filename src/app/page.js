@@ -255,6 +255,15 @@ const Portfolio = () => {
 
   const projects = [
     {
+      title: "CLab",
+      description: {
+        en: "A secure local C programming learning platform developed for beginners. Features secure code compilation, AI-powered automated feedback via LLaMA/Ollama, and multi-user support. Built with Electron, React, Go, and Python for a complete educational experience.",
+        pt: "Uma plataforma local segura de aprendizado de programação C desenvolvida para iniciantes. Possui compilação segura de código, feedback automatizado via IA usando LLaMA/Ollama e suporte multiusuário. Construída com Electron, React, Go e Python para uma experiência educacional completa.",
+      },
+      banner: "/images/clab.png",
+      projectUrl: "https://github.com/VictorHumberto01/CLab_Client.git",
+    },
+    {
       title: "Gustavo's Portfolio",
       description: {
         en: "A law school themed portfolio page developed with NextJS and TailwindCSS. Features a clean and professional design to showcase Gustavo's achievements and work.",
