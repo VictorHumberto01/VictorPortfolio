@@ -255,10 +255,10 @@ const Portfolio = () => {
 
   const projects = [
     {
-      title: "CLab",
+      title: "CLab (WIP)",
       description: {
-        en: "A secure local C programming learning platform developed for beginners. Features secure code compilation, AI-powered automated feedback via LLaMA/Ollama, and multi-user support. Built with Electron, React, Go, and Python for a complete educational experience.",
-        pt: "Uma plataforma local segura de aprendizado de programação C desenvolvida para iniciantes. Possui compilação segura de código, feedback automatizado via IA usando LLaMA/Ollama e suporte multiusuário. Construída com Electron, React, Go e Python para uma experiência educacional completa.",
+        en: "A secure local C programming learning platform developed for beginners. Features secure code compilation through a centralized server, eliminating the need for local compilers. Includes AI-powered automated feedback via LLaMA/Ollama and will have classroom management with submissions, teacher-created exercises, and a comprehensive set of predefined basic programming challenges. Built with Electron, React, Go, and Python for a complete educational experience.",
+        pt: "Uma plataforma local segura de aprendizado de programação C desenvolvida para iniciantes. Possui compilação segura de código através de um servidor centralizado, eliminando a necessidade de compiladores locais. Inclui feedback automatizado via IA usando LLaMA/Ollama e terá gerenciamento de salas de aula com submissões, exercícios criados por professores e um conjunto abrangente de desafios de programação básica predefinidos. Construída com Electron, React, Go e Python para uma experiência educacional completa.",
       },
       banner: "/images/clab.png",
       projectUrl: "https://github.com/VictorHumberto01/CLab_Client.git",
