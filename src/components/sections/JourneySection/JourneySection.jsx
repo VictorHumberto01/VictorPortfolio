@@ -23,6 +23,20 @@ const translations = {
   journey: {
     en: [
         {
+          year: "2026",
+          title: "iOS Developer at dti Digital",
+          location: "dti Digital",
+          description: "Working as an iOS Developer at dti Digital, building and maintaining native iOS applications.",
+          skills: ["Swift", "iOS Development", "Mobile Development"]
+        },
+        {
+          year: "2025",
+          title: "Technical Lead — Troco na Troca (IFMG)",
+          location: "University Extension Project",
+          description: "Leading an 8-person development team as technical lead for a university extension project, running sprints and delegating front-end (Next.js) and back-end work. Designed the backend architecture with Python, Django, PostgreSQL, Celery, and Resend, and containerized the stack with Docker for production.",
+          skills: ["Python", "Django", "PostgreSQL", "Celery", "Docker", "Team Leadership", "Sprint Planning"]
+        },
+        {
           year: "2025",
           specificDate: "Apr",
           title: "Computer Science Student",
@@ -48,10 +62,10 @@ const translations = {
       },
       {
           year: "2024",
-          title: "Software Developer at Quantium Labs",
-          location: "Quantium Labs",
-          description: "Continuing my journey at Quantium Labs, working on various software projects while improving my technical and problem-solving skills.",
-          skills: ["ReactJS", "TailwindCSS", "Project Management", "Team Leadership", "System Design"
+          title: "Freelance Full-Stack Developer",
+          location: "Self-employed",
+          description: "Delivering full-stack projects for clients: a corporate management system for franchise networks, a recurring-payments platform integrated with Cielo using Redis and BullMQ, and a geolocation game with PostGIS and Mapbox. Also handling continuous deployment and Linux server administration in production.",
+          skills: ["Next.js", "Fastify", "PostgreSQL", "Redis", "BullMQ", "PostGIS", "Linux Deployment"
           ]
       },
       {
@@ -78,6 +92,20 @@ const translations = {
     ],
     pt: [
       {
+        year: "2026",
+        title: "Desenvolvedor iOS na dti Digital",
+        location: "dti Digital",
+        description: "Atuando como Desenvolvedor iOS na dti Digital, construindo e mantendo aplicativos nativos para iOS.",
+        skills: ["Swift", "Desenvolvimento iOS", "Desenvolvimento Mobile"]
+      },
+      {
+        year: "2025",
+        title: "Líder Técnico — Troco na Troca (IFMG)",
+        location: "Projeto de Extensão Universitária",
+        description: "Lidero como líder técnico uma equipe de 8 desenvolvedores em um projeto de extensão universitária, organizando sprints e delegando as demandas de front-end (Next.js) e back-end. Defini a arquitetura de backend com Python, Django, PostgreSQL, Celery e Resend, além de conteinerizar o ecossistema com Docker para produção.",
+        skills: ["Python", "Django", "PostgreSQL", "Celery", "Docker", "Liderança de Equipe", "Gestão de Sprints"]
+      },
+      {
         year: "2025",
         specificDate: "Abr",
         title: "Estudante de Ciência da Computação",
@@ -103,10 +131,10 @@ const translations = {
       },
       {
         year: "2024",
-        title: "Desenvolvedor de Software na Quantium Labs",
-        location: "Quantium Labs",
-        description: "Continuando minha jornada na Quantium Labs, trabalhando em vários projetos de software enquanto melhoro minhas habilidades técnicas e de resolução de problemas.",
-        skills: ["ReactJS", "TailwindCSS", "Gestão de Projetos", "Liderança de Equipe", "Design de Sistemas"]
+        title: "Desenvolvedor Web Full-Stack Freelancer",
+        location: "Autônomo",
+        description: "Entregando projetos full-stack para clientes: um sistema de gestão corporativa para redes de franquias, uma plataforma de pagamentos recorrentes integrada à Cielo usando Redis e BullMQ, e um jogo de geolocalização com PostGIS e Mapbox. Também administro deploy contínuo e servidores Linux em produção.",
+        skills: ["Next.js", "Fastify", "PostgreSQL", "Redis", "BullMQ", "PostGIS", "Deploy Linux"]
       },
       {
         year: "2023",

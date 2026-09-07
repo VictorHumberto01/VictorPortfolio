@@ -2,9 +2,10 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { SiGithub, SiLinkedin} from 'react-icons/si';
+import { SiGithub } from 'react-icons/si';
 import { Mail, ExternalLink, ChevronUp, Code } from 'lucide-react';
-import { Button } from '@/components/ui/button'; 
+import { Button } from '@/components/ui/button';
+import LinkedInIcon from '@/components/ui/icons/LinkedInIcon';
 import { useLanguage } from '@/context/LanguageContext';
 
 const translations = {
@@ -87,7 +88,7 @@ const Footer = ({ sectionsRef }) => {
             
             <div className="flex space-x-4">
               <SocialButton icon={<SiGithub className="h-5 w-5" />} href="https://github.com/VictorHumberto01" label="GitHub" />
-              <SocialButton icon={<SiLinkedin className="h-5 w-5" />} href="https://www.linkedin.com/in/victor-gonçalves-98708a349/" label="LinkedIn" />
+              <SocialButton icon={<LinkedInIcon className="h-5 w-5" />} href="https://www.linkedin.com/in/victor-gonçalves-98708a349/" label="LinkedIn" />
               <SocialButton icon={<Mail className="h-5 w-5" />} href="mailto:victor.humberto.dev@gmail.com" label="Email" />
             </div>
           </motion.div>

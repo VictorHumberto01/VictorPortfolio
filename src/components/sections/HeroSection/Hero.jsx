@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
-  Github,
   Mail,
   ArrowRight,
   Send,
@@ -10,6 +9,7 @@ import {
   ChevronDown,
   Languages,
 } from "lucide-react";
+import { SiGithub } from "react-icons/si";
 import { AnimatePresence } from "framer-motion";
 import { useLanguage } from "../../../context/LanguageContext";
 
@@ -264,7 +264,7 @@ const AnimatedHero = () => {
               />
 
               <motion.div className="relative z-10 flex items-center justify-center gap-1.5 sm:gap-2 transition-all duration-300 group-hover:blur-sm">
-                <Github className="h-4 w-4 sm:h-5 sm:w-5" />
+                <SiGithub className="h-4 w-4 sm:h-5 sm:w-5" />
                 <span className="text-sm sm:text-base">GitHub</span>
               </motion.div>
 
@@ -274,7 +274,7 @@ const AnimatedHero = () => {
                 whileHover={{ opacity: 1 }}
                 transition={{ duration: 0.2 }}
               >
-                <Github className="h-4 w-4 sm:h-6 sm:w-6" />
+                <SiGithub className="h-4 w-4 sm:h-6 sm:w-6" />
                 <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
               </motion.div>
             </motion.button>

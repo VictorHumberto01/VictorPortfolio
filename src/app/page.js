@@ -17,7 +17,9 @@ import {
   HomeIcon,
   Languages,
 } from "lucide-react";
-import { SiGithub, SiLinkedin } from "react-icons/si";
+import { SiGithub } from "react-icons/si";
+import LinkedInIcon from "@/components/ui/icons/LinkedInIcon";
+import { TECH_ICONS } from "@/lib/techIcons";
 import { Button } from "@/components/ui/button";
 import AnimatedHero from "@/components/sections/HeroSection/Hero";
 import AboutSection from "@/components/sections/AboutSection/AboutSection";
@@ -159,104 +161,91 @@ const Portfolio = () => {
     {
       name: "Frontend",
       items: [
-        {
-          name: "React",
-          svgUrl:
-            "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/react.svg",
-        },
-        {
-          name: "Next.js",
-          svgUrl:
-            "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/next.svg",
-        },
-        {
-          name: "TypeScript",
-          svgUrl:
-            "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/typescript.svg",
-        },
-        {
-          name: "Tailwind CSS",
-          svgUrl:
-            "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/tailwind.svg",
-        },
-        {
-          name: "HTML5/CSS3",
-          svgUrl:
-            "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/html-css.svg",
-        },
-        {
-          name: "JavaScript",
-          svgUrl:
-            "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/javascript.svg",
-        },
+        { name: "React", icon: TECH_ICONS["React"] },
+        { name: "Next.js", icon: TECH_ICONS["Next.js"] },
+        { name: "TypeScript", icon: TECH_ICONS["TypeScript"] },
+        { name: "Tailwind CSS", icon: TECH_ICONS["Tailwind CSS"] },
+        { name: "HTML5/CSS3", icon: TECH_ICONS["HTML5/CSS3"] },
+        { name: "JavaScript", icon: TECH_ICONS["JavaScript"] },
       ],
     },
     {
       name: "Backend",
       items: [
-        {
-          name: "TypeScript",
-          svgUrl:
-            "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/da046048091a791b72ee3ed1751c85d9598445f9/main/typescript.svg",
-        },
-        {
-          name: "Express",
-          svgUrl:
-            "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/6a09879637bc9c4096c092081c5b7036558c0de2/main/express.svg",
-        },
-        {
-          name: "MySql",
-          svgUrl:
-            "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/6a09879637bc9c4096c092081c5b7036558c0de2/main/mysql.svg",
-        },
-        {
-          name: "MongoDB",
-          svgUrl:
-            "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/6a09879637bc9c4096c092081c5b7036558c0de2/main/mongodb.svg",
-        },
-        {
-          name: "PostgreSQL",
-          svgUrl:
-            "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/6a09879637bc9c4096c092081c5b7036558c0de2/main/postgresql.svg",
-        },
-        {
-          name: "Sqlite",
-          svgUrl:
-            "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/f399628e99a19c1c6480ad95aace0e3a41b51dbe/main/sqlite.svg",
-        },
+        { name: "Python", icon: TECH_ICONS["Python"] },
+        { name: "Django", icon: TECH_ICONS["Django"] },
+        { name: "TypeScript", icon: TECH_ICONS["TypeScript"] },
+        { name: "Fastify", icon: TECH_ICONS["Fastify"] },
+        { name: "Express", icon: TECH_ICONS["Express"] },
+        { name: "Spring Boot", icon: TECH_ICONS["Spring Boot"] },
       ],
     },
     {
-      name: "Tools",
+      name: "Database",
       items: [
-        {
-          name: "Git",
-          svgUrl:
-            "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/f399628e99a19c1c6480ad95aace0e3a41b51dbe/main/git.svg",
-        },
-        {
-          name: "Docker",
-          svgUrl:
-            "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/f399628e99a19c1c6480ad95aace0e3a41b51dbe/main/docker.svg",
-        },
-        {
-          name: "CI/CD",
-          svgUrl:
-            "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/f399628e99a19c1c6480ad95aace0e3a41b51dbe/main/cicd.svg",
-        },
-        {
-          name: "Jest",
-          svgUrl:
-            "https://raw.githubusercontent.com/VictorHumberto01/portfolio-icons/f399628e99a19c1c6480ad95aace0e3a41b51dbe/main/jest.svg",
-        },
+        { name: "PostgreSQL", icon: TECH_ICONS["PostgreSQL"] },
+        { name: "PostGIS", icon: null },
+        { name: "Redis", icon: TECH_ICONS["Redis"] },
+        { name: "MySql", icon: TECH_ICONS["MySQL"] },
+        { name: "MongoDB", icon: TECH_ICONS["MongoDB"] },
+        { name: "Sqlite", icon: TECH_ICONS["SQLite"] },
+        { name: "CouchDB", icon: TECH_ICONS["CouchDB"] },
+        { name: "Celery", icon: TECH_ICONS["Celery"] },
+        { name: "BullMQ", icon: null },
+      ],
+    },
+    {
+      name: "DevOps",
+      items: [
+        { name: "Docker", icon: TECH_ICONS["Docker"] },
+        { name: "Git", icon: TECH_ICONS["Git"] },
+        { name: "Linux", icon: TECH_ICONS["Linux"] },
+        { name: "Nginx", icon: TECH_ICONS["Nginx"] },
+        { name: "Cloudflare", icon: TECH_ICONS["Cloudflare"] },
+        { name: "CI/CD", icon: TECH_ICONS["CI/CD"] },
+        { name: "Jest", icon: TECH_ICONS["Jest"] },
       ],
     },
   ];
 
   const projects = [
     {
+      title: "Enigma",
+      category: "client",
+      confidential: true,
+      techStack: ["Next.js", "Fastify", "PostgreSQL"],
+      description: {
+        en: "A corporate management system for franchise networks, built as a freelance engagement. Architected the corporate university, support-ticket, and permissions modules using Next.js, Fastify, and PostgreSQL.",
+        pt: "Um sistema de gestão corporativa para redes de franquias, desenvolvido como projeto freelancer. Arquitetei os módulos de universidade corporativa, controle de chamados e gestão de permissões utilizando Next.js, Fastify e PostgreSQL.",
+      },
+    },
+    {
+      title: "ABBRT",
+      category: "client",
+      techStack: ["TypeScript", "Redis", "BullMQ", "Cielo"],
+      description: {
+        en: "A recurring-payments platform integrated with Cielo, built as a freelance engagement. Engineered background processing queues with Redis and BullMQ to keep transactions resilient under load.",
+        pt: "Uma plataforma de pagamentos recorrentes integrada à Cielo, desenvolvida como projeto freelancer. Estruturei filas de processamento em background com Redis e BullMQ para garantir resiliência transacional.",
+      },
+      banner: "/images/abbrt.png",
+      projectUrl: "https://www.abbrt.org/",
+    },
+    {
+      title: "Troco na Troca",
+      category: "academic",
+      techStack: ["Python", "Django", "PostgreSQL", "Celery", "Resend", "Docker", "Next.js"],
+      description: {
+        en: "A university extension project at IFMG where I lead an 8-person development team as technical lead, running sprints and delegating front-end (Next.js) and back-end work. Designed and built the backend architecture with Python, Django, PostgreSQL, Celery, and Resend, and containerized the stack with Docker for production.",
+        pt: "Um projeto de extensão universitária do IFMG no qual lidero como líder técnico uma equipe de 8 desenvolvedores, organizando sprints e delegando as demandas de front-end (Next.js) e back-end. Defini e desenvolvi a arquitetura de backend com Python, Django, PostgreSQL, Celery e Resend, além de conteinerizar o ecossistema com Docker para produção.",
+      },
+      banner: "/images/troco.png",
+      projectUrl: "https://troconatroca.com.br",
+    },
+    {
       title: "CLab",
       badge: "In Development",
+      category: "personal",
+      techStack: ["React", "JavaScript", "Tailwind CSS", "Python", "Go", "PostgreSQL", "Electron"],
       description: {
         en: "A secure local C programming learning platform developed for beginners. Features secure code compilation through a centralized server, eliminating the need for local compilers. Includes AI-powered automated feedback via LLaMA/Ollama and will have classroom management with submissions, teacher-created exercises, and a comprehensive set of predefined basic programming challenges. Built with Electron, React, Go, and Python for a complete educational experience.",
         pt: "Uma plataforma local segura de aprendizado de programação C desenvolvida para iniciantes. Possui compilação segura de código através de um servidor centralizado, eliminando a necessidade de compiladores locais. Inclui feedback automatizado via IA usando LLaMA/Ollama e terá gerenciamento de salas de aula com submissões, exercícios criados por professores e um conjunto abrangente de desafios de programação básica predefinidos. Construída com Electron, React, Go e Python para uma experiência educacional completa.",
@@ -266,6 +255,8 @@ const Portfolio = () => {
     },
     {
       title: "Gustavo's Portfolio",
+      category: "client",
+      techStack: ["Next.js", "React", "Tailwind CSS"],
       description: {
         en: "A law school themed portfolio page developed with NextJS and TailwindCSS. Features a clean and professional design to showcase Gustavo's achievements and work.",
         pt: "Uma página de portfólio com tema de faculdade de direito desenvolvida com NextJS e TailwindCSS. Possui um design limpo e profissional para mostrar as conquistas e o trabalho do Gustavo.",
@@ -275,6 +266,8 @@ const Portfolio = () => {
     },
     {
       title: "Céus",
+      category: "client",
+      techStack: ["React", "Next.js", "Tailwind CSS", "TypeScript", "Express", "MySQL"],
       description: {
         en: "A groundbreaking location based game developed for a client under Quantium Labs with ReactJS and TailwindCSS. Features a story system that storage messages and a map system that shows to the player where to go to see the stories.",
         pt: "Um jogo inovador baseado em localização desenvolvido para um cliente sob a Quantium Labs com ReactJS e TailwindCSS. Possui um sistema de história que armazena mensagens e um sistema de mapa que mostra ao jogador onde ir para ver as histórias.",
@@ -284,6 +277,8 @@ const Portfolio = () => {
     },
     {
       title: "Aline Nery's Portfolio",
+      category: "client",
+      techStack: ["React", "JavaScript", "SQLite"],
       description: {
         en: "A personal Portfolio page and event ticket selling system developed for a executive coach under Quantium Labs with NextJS. Features a complete admin dashboard for managing events and tickets.",
         pt: "Uma página de portfólio pessoal e sistema de venda de ingressos para eventos desenvolvido para uma coach executiva sob a Quantium Labs com NextJS. Possui um painel administrativo completo para gerenciar eventos e ingressos.",
@@ -293,6 +288,8 @@ const Portfolio = () => {
     },
     {
       title: "LlamaBridge",
+      category: "opensource",
+      techStack: ["Python", "Flask", "Swift"],
       description: {
         en: "A server and client interface to host your own instance of the Llama model. Uses Ollama to generate the model and a server to host the model. The client is built using Swift for MacOS and commmunicate to local server run in the same network.",
         pt: "Uma interface de servidor e cliente para hospedar sua própria instância do modelo Llama. Usa Ollama para gerar o modelo e um servidor para hospedar o modelo. O cliente é construído usando Swift para MacOS e se comunica com o servidor local executado na mesma rede.",
@@ -302,6 +299,8 @@ const Portfolio = () => {
     },
     {
       title: "Music Discord Bot",
+      category: "opensource",
+      techStack: ["Python", "Pycord"],
       description: {
         en: "My first project. I started as most youtube discord bots were seizing from existing. Can play music from YouTube videos. Developed using Python and Pycord. Features a queue system, loop, playlist support and slash commands. It was made as a experiment and was never used in production.",
         pt: "Meu primeiro projeto. Comecei quando a maioria dos bots do discord do youtube estava deixando de existir. Pode tocar músicas de vídeos do YouTube. Desenvolvido usando Python e Pycord. Possui sistema de fila, loop, suporte a playlist e comandos slash. Foi feito como um experimento e nunca foi usado em produção.",
@@ -474,7 +473,7 @@ const Portfolio = () => {
                     )
                   }
                 >
-                  <SiLinkedin className="mr-2 h-4 w-4" /> LinkedIn
+                  <LinkedInIcon className="mr-2 h-4 w-4" /> LinkedIn
                 </Button>
               </div>
             </div>
@@ -540,7 +539,7 @@ const Portfolio = () => {
       <div
         className={`
           ${isMobile ? "overflow-y-auto" : "h-screen snap-y snap-mandatory overflow-y-scroll"}
-          overflow-x-hidden
+          overflow-x-hidden themed-scrollbar
         `}
         style={{
           willChange: "transform",

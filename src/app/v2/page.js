@@ -3,7 +3,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
-import { Github, Linkedin, Mail, ArrowRight, ArrowLeft, Menu, Loader2, X, ExternalLink, Code2, BookOpen, Briefcase, BookMarked, User, Terminal, ChevronDown, Calendar, MapPin } from 'lucide-react';
+import { Mail, ArrowRight, ArrowLeft, Menu, Loader2, X, ExternalLink, Code2, BookOpen, Briefcase, BookMarked, User, Terminal, ChevronDown, Calendar, MapPin } from 'lucide-react';
+import { SiGithub } from 'react-icons/si';
+import LinkedInIcon from '@/components/ui/icons/LinkedInIcon';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -565,14 +567,14 @@ const scrollToSection = (index) => {
                   className="bg-white/10 hover:bg-white/20 text-white"
                   onClick={() => window.open('https://github.com/VictorHumberto01', '_blank')}
                 >
-                  <Github className="mr-2 h-4 w-4" /> GitHub
+                  <SiGithub className="mr-2 h-4 w-4" /> GitHub
                 </Button>
                 <Button 
                   variant="outline"
                   className="bg-white/10 hover:bg-white/20 text-white"
                   onClick={() => window.open('https://www.linkedin.com/in/victor-gonçalves-98708a349/', '_blank')}
                 >
-                  <Linkedin className="mr-2 h-4 w-4" /> LinkedIn
+                  <LinkedInIcon className="mr-2 h-4 w-4" /> LinkedIn
                 </Button>
               </div>
             </div>
@@ -737,7 +739,7 @@ const scrollToSection = (index) => {
               className="bg-zinc-900/50 hover:bg-zinc-800/50 text-zinc-300 border-zinc-700/50 transition-colors duration-300"
               onClick={() => window.open('https://github.com/VictorHumberto01', '_blank')}
             >
-              <Github className="mr-2 h-5 w-5" /> GitHub
+              <SiGithub className="mr-2 h-5 w-5" /> GitHub
             </Button>
             <Button 
               variant="secondary" 
@@ -745,7 +747,7 @@ const scrollToSection = (index) => {
               className="bg-zinc-900/50 hover:bg-zinc-800/50 text-zinc-300 border-zinc-700/50 transition-colors duration-300"
               onClick={() => window.open('https://www.linkedin.com/in/victor-gonçalves-98708a349/', '_blank')}
             >
-              <Linkedin className="mr-2 h-5 w-5" /> LinkedIn
+              <LinkedInIcon className="mr-2 h-5 w-5" /> LinkedIn
             </Button>
             <Button 
               variant="secondary" 

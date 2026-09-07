@@ -2,7 +2,10 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Code2, Terminal, Database, Server } from 'lucide-react';
+import { Card, CardContent } from '@/components/ui/card';
 import { useLanguage } from '../../../context/LanguageContext';
+import TechIcon from '@/components/ui/TechIcon';
 
 // Add translations
 const translations = {
@@ -12,7 +15,8 @@ const translations = {
     categories: {
       Frontend: "Frontend",
       Backend: "Backend",
-      Tools: "Tools"
+      Database: "Database & Queues",
+      DevOps: "DevOps & Tools"
     }
   },
   pt: {
@@ -21,21 +25,29 @@ const translations = {
     categories: {
       Frontend: "Frontend",
       Backend: "Backend",
-      Tools: "Ferramentas"
+      Database: "Banco de Dados & Filas",
+      DevOps: "DevOps & Ferramentas"
     }
   }
+};
+
+const CATEGORY_ICONS = {
+  Frontend: Code2,
+  Backend: Terminal,
+  Database: Database,
+  DevOps: Server,
 };
 
 const SkillsSection = ({ skills, currentSection, sectionsRef }) => {
   const { language } = useLanguage();
 
   return (
-    <section 
+    <section
       id='skills'
-      ref={el => sectionsRef.current[2] = el} 
+      ref={el => sectionsRef.current[2] = el}
       className="h-screen snap-start flex items-center relative"
     >
-      <motion.div 
+      <motion.div
         className="container mx-auto px-4 py-24"
         initial={{ opacity: 0 }}
         animate={currentSection === 2 ? { opacity: 1 } : {}}
@@ -64,83 +76,56 @@ const SkillsHeader = ({ currentSection, language }) => {
 
 const SkillsGrid = ({ skills, currentSection, language }) => {
   return (
-    <motion.div 
-      className="grid grid-cols-1 md:grid-cols-2 gap-8"
-      initial={{ opacity: 0 }}
-      animate={currentSection === 2 ? { opacity: 1 } : {}}
-      transition={{ duration: 0.5 }}
-    >
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
       {skills.map((category, categoryIndex) => (
-        <SkillCategory 
-          key={category.name} 
-          category={category} 
-          categoryIndex={categoryIndex} 
-          currentSection={currentSection} 
+        <SkillCategory
+          key={category.name}
+          category={category}
+          categoryIndex={categoryIndex}
+          currentSection={currentSection}
           language={language}
         />
       ))}
-    </motion.div>
+    </div>
   );
 };
 
 const SkillCategory = ({ category, categoryIndex, currentSection, language }) => {
+  const CategoryIcon = CATEGORY_ICONS[category.name] ?? Code2;
+
   return (
     <motion.div
-      className="space-y-6"
-      initial={{ opacity: 0, x: categoryIndex % 2 === 0 ? -50 : 50 }}
-      animate={currentSection === 2 ? { opacity: 1, x: 0 } : {}}
-      transition={{ 
-        duration: 0.5, 
-        delay: categoryIndex * 0.3,
-        type: "spring",
-        stiffness: 100
-      }}
+      initial={{ opacity: 0, y: 16 }}
+      animate={currentSection === 2 ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.4, delay: categoryIndex * 0.1, ease: "easeOut" }}
     >
-      <h3 className="text-xl font-semibold text-zinc-50">
-        {translations[language].categories[category.name]}
-      </h3>
-      <div className="grid grid-cols-2 gap-4">
-        {category.items.map((item, index) => (
-          <SkillItem 
-            key={item.name} 
-            item={item} 
-            index={index} 
-            categoryIndex={categoryIndex} 
-            currentSection={currentSection} 
-          />
-        ))}
-      </div>
+      <Card className="bg-zinc-900/20 border-zinc-800/30 backdrop-blur-sm hover:bg-zinc-900/30 hover:border-blue-500/30 transition-colors duration-300 h-full">
+        <CardContent className="p-6">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="w-9 h-9 rounded-full bg-blue-500/10 flex items-center justify-center border border-blue-500/20 flex-shrink-0">
+              <CategoryIcon className="h-4 w-4 text-blue-400" />
+            </div>
+            <h3 className="text-lg font-semibold text-zinc-50">
+              {translations[language].categories[category.name]}
+            </h3>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {category.items.map((item) => (
+              <SkillPill key={item.name} item={item} />
+            ))}
+          </div>
+        </CardContent>
+      </Card>
     </motion.div>
   );
 };
 
-const SkillItem = ({ item, index, categoryIndex, currentSection }) => {
+const SkillPill = ({ item }) => {
   return (
-    <motion.div
-      className="flex items-center gap-3 p-3 bg-zinc-800/30 rounded-lg backdrop-blur-sm hover:bg-zinc-700/30 transition-all duration-300"
-      initial={{ opacity: 0, y: 20, scale: 0.9 }}
-      animate={currentSection === 2 ? {
-        opacity: 1,
-        y: 0,
-        scale: 1,
-        transition: {
-          delay: categoryIndex * 0.3 + index * 0.1 + 0.2,
-          duration: 0.4,
-          type: "spring",
-          stiffness: 100
-        }
-      } : {}}
-      whileHover={{ scale: 1.05, y: -5 }}
-      whileTap={{ scale: 0.95 }}
-    >
-      <img
-        src={item.svgUrl}
-        alt={item.name}
-        className="w-6 h-6 object-contain"
-        loading="lazy"
-      />
-      <span className="text-zinc-50">{item.name}</span>
-    </motion.div>
+    <div className="flex items-center gap-2 px-3 py-1.5 bg-zinc-800/50 rounded-full text-zinc-300 hover:bg-zinc-700/50 hover:text-zinc-50 transition-colors duration-200">
+      <TechIcon icon={item.icon} name={item.name} className="w-4 h-4 text-zinc-300 flex-shrink-0" />
+      <span className="text-xs font-medium">{item.name}</span>
+    </div>
   );
 };
 
